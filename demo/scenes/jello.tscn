@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://2lesshmiwo2m"]
+[gd_scene format=3 uid="uid://b68uhu023oih"]
 
-[ext_resource type="Script" uid="uid://je6oo5gsoy33" path="res://demo/scenes/open_vat_singleton_demo.gd" id="1_4gsay"]
-[ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="2_6jyy4"]
-[ext_resource type="ArrayMesh" uid="uid://dh0wc7ynk2gsm" path="res://demo/assets/cloth/cloth_mesh.res" id="3_hk1e5"]
-[ext_resource type="Texture2D" uid="uid://chovdonrf753h" path="res://antz_512.png" id="4_4gsay"]
+[ext_resource type="Script" uid="uid://je6oo5gsoy33" path="res://demo/scenes/open_vat_singleton_demo.gd" id="1_84r0i"]
+[ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="2_04gnp"]
+[ext_resource type="ArrayMesh" uid="uid://c2ijduj11ssj" path="res://demo/assets/jello/jello_mesh.res" id="3_84r0i"]
+[ext_resource type="Texture2D" uid="uid://chovdonrf753h" path="res://antz_512.png" id="4_3uf71"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7n746"]
 
@@ -16,18 +16,18 @@ sky = SubResource("Sky_03w7h")
 ambient_light_source = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwhhi"]
-albedo_texture = ExtResource("2_6jyy4")
+albedo_texture = ExtResource("2_04gnp")
 uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m56k3"]
 material = SubResource("StandardMaterial3D_uwhhi")
 size = Vector2(200, 200)
 
-[node name="ClothDemo" type="Node3D" unique_id=391254406]
-script = ExtResource("1_4gsay")
-title = "Cloth Demo - Perfect loop - 399 frames"
+[node name="JelloDemo" type="Node3D" unique_id=391254406]
+script = ExtResource("1_84r0i")
+title = "Jello Demo - Single Instance"
 rotate_camera = true
-camera_position = Vector3(0, 20, 30)
+camera_position = Vector3(0, 5, 15)
 
 [node name="Pivot" type="Node3D" parent="." unique_id=2130049990]
 
@@ -48,10 +48,28 @@ directional_shadow_mode = 0
 mesh = SubResource("PlaneMesh_m56k3")
 
 [node name="DemoMesh" type="MeshInstance3D" parent="." unique_id=866083330]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 10.783943, 0)
-mesh = ExtResource("3_hk1e5")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 11, 0)
+extra_cull_margin = 100.0
+mesh = ExtResource("3_84r0i")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=10977124]
+
+[node name="Title" type="Label" parent="UI" unique_id=1675045234]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -67.0
+offset_right = 99.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Example"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=1163633282]
 offset_right = 40.0
@@ -135,25 +153,8 @@ offset_right = -3.0
 offset_bottom = 42.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("4_4gsay")
+texture = ExtResource("4_3uf71")
 expand_mode = 1
-
-[node name="Title" type="Label" parent="UI" unique_id=722622082]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -99.0
-offset_top = -67.0
-offset_right = 99.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 48
-text = "Example"
 
 [connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows/ShadowsCheckButton" to="." method="_on_shadows_check_button_toggled"]
 [connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows2/VSyncCheckButton" to="." method="_on_v_sync_check_button_toggled"]

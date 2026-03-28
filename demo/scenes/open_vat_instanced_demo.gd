@@ -1,3 +1,4 @@
+class_name OpenVATInstanceDemo
 extends Node3D
 
 @onready var directional_light_3d: DirectionalLight3D = $DirectionalLight3D
@@ -7,9 +8,12 @@ extends Node3D
 @onready var pivot: Node3D = $Pivot
 @onready var camera_3d: Camera3D = $Pivot/Camera3D
 
+@onready var title_label: Label = $UI/Title
 @onready var instance_count: Label = $UI/MarginContainer/VBox/HBoxCount/InstanceCount
 @onready var shadows_check_button: CheckButton = $UI/MarginContainer/VBox/HBoxShadows/ShadowsCheckButton
 @onready var v_sync_check_button: CheckButton = $UI/MarginContainer/VBox/HBoxShadows2/VSyncCheckButton
+
+@export var title: String
 
 @export_category("Instance Rotation")
 @export var randomize_rotation: bool
@@ -29,6 +33,7 @@ var location: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	instance_count.text = str(vat_multi_mesh_instance_3d.multimesh.instance_count)
+	title_label.text = title
 	camera_3d.global_position = camera_position
 	camera_3d.look_at(camera_lookat)
 	

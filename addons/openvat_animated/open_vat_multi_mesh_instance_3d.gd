@@ -129,6 +129,7 @@ func update_instance_track(instance_id: int, track_number: int):
 
 ## Updates the current instance_id with the provided alpha (0..1)
 func update_instance_alpha(instance_id: int, alpha: float):
+	alpha = clampf(alpha, 0.0, 1.0)
 	custom_data = multimesh.get_instance_custom_data(instance_id)
 	custom_data.a = alpha
 	multimesh.set_instance_custom_data(instance_id, custom_data)
