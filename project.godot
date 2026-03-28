@@ -1,0 +1,53 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[DebugMenu]
+
+settings/font_size=24
+settings/startup_visibility=1
+
+[application]
+
+config/name="OpenVAT"
+config/version="1.0.0"
+run/main_scene="uid://cfhh2cys178e6"
+config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/image="uid://dte7lad25mhoo"
+config/icon="uid://chovdonrf753h"
+
+[autoload]
+
+DebugMenu="*uid://cggqb75a8w8r"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/openvat_animated/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "red",
+"res://demo/": "green",
+"res://demo/assets/": "purple",
+"res://demo/scenes/": "green"
+}
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
