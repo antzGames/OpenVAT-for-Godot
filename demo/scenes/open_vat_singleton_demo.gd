@@ -23,6 +23,7 @@ var node3D: Node3D = Node3D.new()
 var location: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if v_sync_check_button.button_pressed else DisplayServer.VSYNC_DISABLED)
 	camera_3d.global_position = camera_position
 	camera_3d.look_at(camera_lookat)
 	title_label.text = title
