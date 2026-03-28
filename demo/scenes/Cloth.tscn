@@ -55,6 +55,35 @@ mesh = ExtResource("3_hk1e5")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=10977124]
 
+[node name="Title" type="Label" parent="UI" unique_id=722622082]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -67.0
+offset_right = 99.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Example"
+
+[node name="Info" type="Label" parent="UI" unique_id=1564099575]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -204.5
+offset_right = 204.5
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "Press [SPACE] or [F1] to load next scene."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=1163633282]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -139,35 +168,6 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("4_4gsay")
 expand_mode = 1
-
-[node name="Title" type="Label" parent="UI" unique_id=722622082]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -99.0
-offset_top = -67.0
-offset_right = 99.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 48
-text = "Example"
-
-[node name="Info" type="Label" parent="UI" unique_id=1564099575]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -204.5
-offset_right = 204.5
-offset_bottom = 49.0
-grow_horizontal = 2
-text = "Press [ENTER} to load next scene."
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows/ShadowsCheckButton" to="." method="_on_shadows_check_button_toggled"]
 [connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows2/VSyncCheckButton" to="." method="_on_v_sync_check_button_toggled"]

@@ -93,7 +93,7 @@ func _process(delta: float) -> void:
 		pivot.rotate_y(delta * 0.1)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("next_scene"):
 		if next_scene: get_tree().change_scene_to_packed(next_scene)
 
 func _on_shadows_check_button_toggled(toggled_on: bool) -> void:

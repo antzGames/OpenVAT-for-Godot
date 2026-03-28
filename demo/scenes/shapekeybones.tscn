@@ -79,7 +79,7 @@ offset_left = -204.5
 offset_right = 204.5
 offset_bottom = 49.0
 grow_horizontal = 2
-text = "Press [ENTER} to quit demo."
+text = "Press [SPACE] or [F1] to to quit demo."
 horizontal_alignment = 1
 vertical_alignment = 1
 
