@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7wkugnkuwbqm" path="res://demo/scenes/open_vat_instanced_demo.gd" id="1_rnn6x"]
 [ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="2_wss0q"]
 [ext_resource type="Script" uid="uid://sp8krhj7tq5i" path="res://addons/openvat_animated/open_vat_multi_mesh_instance_3d.gd" id="4_kwjqe"]
+[ext_resource type="Texture2D" uid="uid://chovdonrf753h" path="res://antz_512.png" id="5_yt84e"]
 [ext_resource type="ArrayMesh" uid="uid://cti8je4xel4yb" path="res://demo/assets/soda/soda_mesh.res" id="7_hohdk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7n746"]
@@ -133,4 +134,21 @@ theme_override_font_sizes/font_size = 24
 button_pressed = true
 text = "True"
 
+[node name="Label" type="TextureRect" parent="UI" unique_id=271355795]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -86.0
+offset_right = -3.0
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_yt84e")
+expand_mode = 1
+
+[connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows/ShadowsCheckButton" to="." method="_on_shadows_check_button_toggled"]
 [connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows2/VSyncCheckButton" to="." method="_on_v_sync_check_button_toggled"]

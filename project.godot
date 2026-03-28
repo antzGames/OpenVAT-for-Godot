@@ -17,7 +17,7 @@ settings/startup_visibility=1
 
 config/name="OpenVAT"
 config/version="1.0.0"
-run/main_scene="uid://cfhh2cys178e6"
+run/main_scene="uid://2lesshmiwo2m"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://dte7lad25mhoo"
 config/icon="uid://chovdonrf753h"
