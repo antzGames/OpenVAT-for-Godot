@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="2_6wryr"]
 [ext_resource type="PackedScene" uid="uid://2lesshmiwo2m" path="res://demo/scenes/cloth.tscn" id="2_mi45e"]
 [ext_resource type="ArrayMesh" uid="uid://cti8je4xel4yb" path="res://demo/assets/soda/soda_mesh.res" id="3_mi45e"]
-[ext_resource type="Script" uid="uid://sp8krhj7tq5i" path="res://addons/openvat_animated/open_vat_multi_mesh_instance_3d.gd" id="4_shkfh"]
+[ext_resource type="Script" uid="uid://sp8krhj7tq5i" path="res://addons/openvat_animated/src/open_vat_multi_mesh_instance_3d.gd" id="4_shkfh"]
 [ext_resource type="Texture2D" uid="uid://chovdonrf753h" path="res://antz_512.png" id="5_r2gpl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7n746"]
