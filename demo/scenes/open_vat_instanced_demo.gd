@@ -14,6 +14,7 @@ extends Node3D
 @onready var v_sync_check_button: CheckButton = $UI/MarginContainer/VBox/HBoxShadows2/VSyncCheckButton
 
 @export var title: String
+@export var next_scene: PackedScene
 
 @export_category("Instance Rotation")
 @export var randomize_rotation: bool
@@ -89,6 +90,10 @@ func randomizeInstance(i: int):
 func _process(delta: float) -> void:
 	if rotate_camera:
 		pivot.rotate_y(delta * 0.1)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		if next_scene: get_tree().change_scene_to_packed(next_scene)
 
 func _on_shadows_check_button_toggled(toggled_on: bool) -> void:
 	shadows_check_button.text = str(toggled_on).capitalize()

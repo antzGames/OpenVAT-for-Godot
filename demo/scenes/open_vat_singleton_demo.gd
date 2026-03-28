@@ -12,6 +12,7 @@ extends Node3D
 @onready var title_label: Label = $UI/Title
 
 @export var title: String
+@export var next_scene: PackedScene
 
 @export_category("Camera")
 @export var rotate_camera: bool
@@ -29,6 +30,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if rotate_camera:
 		pivot.rotate_y(delta * 0.1)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		if next_scene: get_tree().change_scene_to_packed(next_scene)
+		else: get_tree().quit()
 
 func _on_shadows_check_button_toggled(toggled_on: bool) -> void:
 	shadows_check_button.text = str(toggled_on).capitalize()

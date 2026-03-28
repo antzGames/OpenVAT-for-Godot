@@ -48,8 +48,8 @@ func setupInstances():
 			a = 0
 			
 func randomizeInstance(i: int):
-	node3D.scale = Vector3(randf_range(base_scale, max_scale), randf_range(base_scale, max_scale), randf_range(base_scale, max_scale))
-
+	if randomize_scale:
+		node3D.scale = Vector3(randf_range(base_scale, max_scale), randf_range(base_scale, max_scale), randf_range(base_scale, max_scale))
 	
 	location.x = x
 	location.z = z
@@ -62,6 +62,8 @@ func randomizeInstance(i: int):
 	
 	node3D.rotation.x = 0
 	node3D.rotation.z = 0
-	node3D.rotate_y(randf_range(0, TAU))
+	if randomize_rotation:
+		node3D.rotate_y(randf_range(0, TAU))
+		
 	node3D.position = location
-	vat_multi_mesh_instance_3d.multimesh.set_instance_transform(i, node3D.transform)			
+	vat_multi_mesh_instance_3d.multimesh.set_instance_transform(i, node3D.transform)

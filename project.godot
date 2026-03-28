@@ -17,7 +17,7 @@ settings/startup_visibility=1
 
 config/name="OpenVAT"
 config/version="1.0.0"
-run/main_scene="uid://cm5cqd4dopvkb"
+run/main_scene="uid://cfhh2cys178e6"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://dte7lad25mhoo"
 config/icon="uid://chovdonrf753h"
@@ -51,3 +51,4 @@ folder_colors={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/msaa_3d=1
