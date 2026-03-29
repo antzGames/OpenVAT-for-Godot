@@ -58,15 +58,27 @@ func setupInstances():
 		# randomize scale, rotation, and location
 		randomizeInstance(instance)
 		
+		#func get_track_number_from_instance(instance_id: int) -> int:
+		#func get_animation_from_instance(instance_id: int) -> OpenVATAnimationTrack:
+		#func get_track_number_from_animation(animation: OpenVATAnimationTrack) -> int:
+		#func get_track_number_from_start_end_frames(start: int, end: int) -> int:
+			
 		# Unit tests for helper functions - you can comment this out
-		#print("Instance: ", instance, "   Track: ", vat_multi_mesh_instance_3d.get_track_number_from_instance(instance), \
-			#"   Frame Start/End:", vat_multi_mesh_instance_3d.get_start_end_frames_from_instance(instance), \
-			#"   Test Vector2i: ", vat_multi_mesh_instance_3d.get_start_end_frames_from_track_number(a) == vat_multi_mesh_instance_3d.get_start_end_frames_from_instance(instance), \
-			#"   Test Track: ", vat_multi_mesh_instance_3d.get_track_number_from_track_vector(vat_multi_mesh_instance_3d.get_start_end_frames_from_track_number(a)) == vat_multi_mesh_instance_3d.get_track_number_from_instance(instance))
-
-		# this cycles threw each animation track number
+		#if instance < 50:
+			#var track: OpenVATAnimationTrack = vat_multi_mesh_instance_3d.get_animation_from_instance(instance)
+			#var tn: int = vat_multi_mesh_instance_3d.get_track_number_from_instance(instance)
+			#var tn_anim: int = vat_multi_mesh_instance_3d.get_track_number_from_animation(track)
+			#var tn_se: int = vat_multi_mesh_instance_3d.get_track_number_from_start_end_frames(track.startFrame, track.endFrame)
+			#
+			## Print the test results/
+			#print(track, " Tests: ",
+				## is the assigned animation object correct                     Are all three track_number methods the same?
+				#track == vat_multi_mesh_instance_3d.animation_tracks[tn], " ", bool(tn == tn_anim and tn == tn_se))
+			#
+		
+		# this cycles through each animation track number
 		a += 1
-		if a > vat_multi_mesh_instance_3d.number_of_animation_tracks - 1:
+		if a > vat_multi_mesh_instance_3d.animation_tracks.size() - 1:
 			a = 0
 		
 func randomizeInstance(i: int):
