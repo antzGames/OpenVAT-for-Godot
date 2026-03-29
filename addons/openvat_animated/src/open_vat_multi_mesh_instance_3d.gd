@@ -147,7 +147,7 @@ func get_animation_from_instance(instance_id: int) -> OpenVATAnimationTrack:
 			
 	return null
 
-## get track_number search all animation_tracks using an animation object to search.
+## get track_number using an animation object to search animation_tracks.
 ## Returns -1 if not found or animation object is null.
 func get_track_number_from_animation(animation: OpenVATAnimationTrack) -> int:
 	if !animation: return -1
@@ -218,6 +218,7 @@ func import_json():
 			track.set_track("Default", 0, frames-1 , 24 , true)
 			animation_tracks.append(track)
 			print_rich(str("❌[color=orange]No animation meta data found.[/color]  Creating one track with ", frames, " frames."))
+			print_rich(str("  🎞️Animation track 1: [color=yellow]", track.name, "[/color] Start/End Frames: [color=yellow]", track.startFrame , "-", track.endFrame, "[/color]"))			
 		else:
 			animation_tracks.clear()
 			var i: int = 0
@@ -229,8 +230,8 @@ func import_json():
 				animation_tracks.append(track)
 				i += 1
 			print_rich(str("✅Total animation tracks parsed: [color=yellow]",animation_tracks.size(),"[/color]"))			
-			print_rich(str("✅Frames parsed: [color=yellow]",frames,"[/color]"))
-		
+			
+		print_rich(str("✅Frames parsed: [color=yellow]",frames,"[/color]"))
 		print_rich("[color=cyan]OpenVAT import completed.[/color]")
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", content, " at line ", json.get_error_line())
