@@ -73,7 +73,7 @@ However, the Godot version of the OpenVAT shader assumes you exported your model
 5. Open your newly saved `Mesh` resource.  In `Surface 0`, change the `Material` to a `ShaderMaterial` and assign the 
 OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanced_shader.gdshader`
 6. Drag the `EXR` OpenVAT file into the `Vertex Animation Texture` shader parameter.
-7. Set the `Speed` shader paramter to the FPS of the animation that was in Blender (defaults to 24).
+7. Set the `Speed` shader parameter to the FPS of the animation that was in Blender (defaults to 24).
 8. (Optional) Drag or configure any albedo, metallic, roghness, norma map textures into the provided shader paramters.
 9. Save your configured Mesh.
 
