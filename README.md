@@ -6,7 +6,7 @@ OpenVAT is a Blender-native toolkit for baking Vertex Animation Textures (VATs) 
 enabling engines and DCCs to semalessly play back complex animated deformation as 
 vertex offsets on GPU via low-cost vertex shaders. OpenVAT GitHub: https://github.com/sharpen3d/openvat
 
-In addition a easy to use new `OpenVATVATMultiMeshInstance3D` node is provided for easy 
+In addition, a new, easy to use `OpenVATVATMultiMeshInstance3D` node is provided for 
 instanced animation support, with auto OpenVAT configuration importing.
 
 ## Preview
@@ -32,10 +32,8 @@ https://github.com/user-attachments/assets/d9d33d3f-720a-48d8-9bb5-6a15169e03d9
 
 - Mesh must be less than 8192 vertices.
 - Total number of frames for all animations must be less than 4096.
-- No blending or transitions between animation tracks.
-- Although the complete OpenVAT animation meta data is imported and stored in the `OpenVATMultiMeshInstance3D` node, it is not used in the shader. 
-So `framerate` and `isLooping` are ignored. All animation tracks will use the same framerate.  Maybe in the future it will be used in the Godot OpenVAT solution.
-- Animation tracks will always loop, so you need to develop a custom solution for chaining different animations.
+- No blending or mixing of animation tracks.
+- Although the complete OpenVAT animation meta data is imported and stored in the `OpenVATMultiMeshInstance3D` node, `framerate` and `isLooping` are ignored. All animation tracks will use the same framerate.  All animation tracks will loop. Maybe in the future it will be used in the Godot OpenVAT solution.
 - `MultiMeshInstance3D` `custom_data` is used by this plugin so you will not have access to use it.
 
 ## Requirements
@@ -51,18 +49,18 @@ Maybe if this plugin gets noticed, I will add it to Godot's AssetLib.  Until the
 - Extract the ZIP file.
 - Copy the `addons` directory from the extracted ZIP file into your Godot project's `res://` filesystem.
 - Go to `Project > Project Settings > Plugins` and enable **OpenVAT Animated MultiMeshInstance3D Plugin**.
-- Test to see if you can add the new `OpenVATMultiMeshInstance3D` node into a scene.
+- Add the new `OpenVATMultiMeshInstance3D` node into a scene.
 
 ## `OpenVATMultiMeshInstance3D`
 
-This plugin provides a new node called `VATMultiMeshInstance3D` which inherits `MultiMeshInstance3D`.
+This plugin provides a new node called `OpenVATMultiMeshInstance3D` which inherits `MultiMeshInstance3D`.
 
 ### Preparing your Mesh for use with the `OpenVATMultiMeshInstance3D` node
 
 > [!IMPORTANT]  
 > Crucial information necessary for to use the `OpenVATMultiMeshInstance3D` node.
 
-1. Not going to explain how to use OpenVAT as the OpenVAT developer has hours of videos demonstrating how to use it.
+1. Not going to explain how to use OpenVAT Blender tool, as the OpenVAT developer has hours of videos demonstrating how to use it.
 However, the Godot version of the OpenVAT shader assumes you exported your model in Blender with the OpenVAT tool using these settings:
  - `Vertex Normals` = `Packed`
  - `Use Single Row` checked
@@ -98,9 +96,9 @@ You can manually force the loading of the JSON file by click on the `Import JSON
 
 ### `OpenVATMultiMeshInstance3D` Functions
 
-### `MutiMeshInstance3D` `custom_data` information
+### Instanced `custom_data` information
 
-`MultiMeshInstance3D` `custom_data` is used by this plugin and instanced shader.  Here is how it is used:
+The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and instanced shader.  Here is how it is used:
 
 - `custom_data.r` = **animation offset**: used to randomize instances playing the same animation track
 - `custom_data.g` = **animation start frame**
