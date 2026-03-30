@@ -6,7 +6,7 @@ OpenVAT is a Blender-native toolkit for baking Vertex Animation Textures (VATs) 
 enabling engines and DCCs to semalessly play back complex animated deformation as 
 vertex offsets on GPU via low-cost vertex shaders. OpenVAT GitHub: https://github.com/sharpen3d/openvat
 
-In addition, a new, easy to use `OpenVATVATMultiMeshInstance3D` node is provided for 
+In addition, a new, easy to use `OpenVATMultiMeshInstance3D` node is provided for 
 instanced animation support, with auto OpenVAT configuration importing.
 
 ## Preview
