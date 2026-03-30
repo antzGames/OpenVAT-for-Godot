@@ -141,7 +141,7 @@ Or play the next animation track of all instances using:
 
 ### `OpenVATMultiMeshInstance3D` Animation Get Functions
 
-Animation meta data is stored in an array of `OpenVATAnimationTrack`:
+Animation meta data is stored in the `animation_tracks` variable.  It is an `Array` of `OpenVATAnimationTrack`:
 ```gdscript
 var animation_tracks: Array[OpenVATAnimationTrack] 
 ```
