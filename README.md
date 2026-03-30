@@ -98,7 +98,7 @@ OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanc
 You can manually force the loading of the JSON file by click on the `Import JSON` button in the inspector.
 
 > [!NOTE]  
-> The JSON file is automatically imported on `_ready()` which means it runs every activation.  This makes sure that the latest JSON file is used.d
+> The JSON file is automatically imported on `_ready()` which means it runs every activation.  This makes sure that the latest JSON file is used.
 
 The JSON importer outputs information on the console:
 
@@ -114,7 +114,7 @@ If you want to change the alpha so can fade a specific instance out (or fade in)
 
 `update_instance_alpha(instance_id: int, alpha: float)`
 
-If you want to change the animation offset of an instance, so that different instances playing the same aninmation
+If you want to change the animation offset of an instance, so that different instances playing the same animation
 track are not syncronized, use:
 
 `update_instance_animation_offset(instance_id: int, animation_offset: float)`
