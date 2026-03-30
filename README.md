@@ -62,10 +62,10 @@ This plugin provides a new node called `OpenVATMultiMeshInstance3D` which inheri
 
 1. Not going to explain how to use OpenVAT Blender tool, as the OpenVAT developer has hours of videos demonstrating how to use it.
 However, the Godot version of the OpenVAT shader assumes you exported your model in Blender with the OpenVAT tool using these settings:
-  - `Vertex Normals` = `Packed`
-  - `Use Single Row` checked
-  - `Export Model` checked
-  - `Model Format` = `glTF Binary`
+	- `Vertex Normals` = `Packed`
+	- `Use Single Row` checked
+	- `Export Model` checked
+	- `Model Format` = `glTF Binary`
 2. The OpenVAT output will be 3 files: a `GLB` file, a `EXR` file and a `JSON` file.  Copy these files into you Godot project.
 3. Make sure the `EXR` file is re-imported with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
 4. Open the `GLB` model, go to the Meshes tab, and on the right select `Save to File` option. You should also disable LODs 
