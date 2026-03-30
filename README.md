@@ -95,7 +95,60 @@ You can manually force the loading of the JSON file by click on the `Import JSON
 > [!NOTE]  
 > The JSON file is automatically imported on `_ready()` which means it runs every activation.  This makes sure that the latest JSON file is used.d
 
-### `OpenVATMultiMeshInstance3D` Functions
+### `OpenVATMultiMeshInstance3D` Update Functions
+
+If you want to change the track for a specific instance, use:
+
+`update_instance_track(instance_id: int, track_number: int)`
+
+If you want to change the alpha so can fade an specific instance out (or fade in), use:
+
+`update_instance_alpha(instance_id: int, alpha: float)`
+
+If you want to change the animation offset of an instance, so that different instances playing the same aninmation
+track are not syncronized, use:
+
+`update_instance_animation_offset(instance_id: int, animation_offset: float)`
+
+You can also change all parameters of a specific instance by using:
+
+`update_instance(instance_id: int,animation_offset: float, track_number: int, alpha: float)`
+
+You can also change ALL instances by using:
+
+`update_all_instances(animation_offset: float, track_number: int, alpha: float)`
+
+### `OpenVATMultiMeshInstance3D` Animation Play Functions
+
+You can play the next animation track of an instance using:
+
+`play_next_track_instance(instance_id: int)`
+
+Or play the next animation track of all instances using:
+	
+`play_next_track_all_instances()`
+
+### `OpenVATMultiMeshInstance3D` Animation Get Functions
+
+Animation meta data is stored in an array of `OpenVATAnimationTrack`:
+```gdscript
+var animation_tracks: Array[OpenVATAnimationTrack] 
+```
+To get the `OpenVATAnimationTrack` object from an instance:
+
+`get_animation_from_instance(instance_id: int) -> OpenVATAnimationTrack`
+
+To get the animation track index from the provided `OpenVATAnimationTrack` object: 
+
+`get_track_number_from_animation(animation: OpenVATAnimationTrack) -> int`
+
+To get the animation track index from the start and end frames, use:
+
+`get_track_number_from_start_end_frames(start: int, end: int)`
+
+To get the currently playing animation track index from the instance, use:
+
+`get_track_number_from_instance(instance_id: int)`
 
 ### Instanced `custom_data` information
 
