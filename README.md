@@ -171,7 +171,9 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 
 A demo is provided.  Just run the project.  Pressing SPACE or F1 will load the next scene.
 
-## Using the OpenVAT shader on its own
+MSAA 2x is set at the project level.  Turning off MSAA improves performance.
+
+## Using the OpenVAT Godot shader on its own
 
 I have provied the official OpenVAT Godot shader for you to use on your own custom solutions.
 
