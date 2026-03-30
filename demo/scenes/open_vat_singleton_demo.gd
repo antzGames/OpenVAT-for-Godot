@@ -35,7 +35,8 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("next_scene"):
 		if next_scene: get_tree().change_scene_to_packed(next_scene)
-		else: get_tree().quit()
+		else:
+			if OS.get_name() != "Web": get_tree().quit()
 
 func _on_shadows_check_button_toggled(toggled_on: bool) -> void:
 	shadows_check_button.text = str(toggled_on).capitalize()
