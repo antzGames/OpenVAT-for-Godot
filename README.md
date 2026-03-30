@@ -77,7 +77,7 @@ OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanc
 8. (Optional) Drag or configure any albedo, metallic, roghness, norma map textures into the provided shader paramters.
 9. Save your configued Mesh.
 
-✅Now this Mesh can be used in any `OpenVATMultiMeshInstance3D`
+✅This Mesh can be used in any `OpenVATMultiMeshInstance3D`
 
 🎞️This video will show you how to prepare your `Mesh` for the `OpenVATMultiMeshInstance3D` node.
 
@@ -103,7 +103,7 @@ If you want to change the track for a specific instance, use:
 
 `update_instance_track(instance_id: int, track_number: int)`
 
-If you want to change the alpha so can fade an specific instance out (or fade in), use:
+If you want to change the alpha so can fade a specific instance out (or fade in), use:
 
 `update_instance_alpha(instance_id: int, alpha: float)`
 
@@ -144,13 +144,13 @@ To get the animation track index from the provided `OpenVATAnimationTrack` objec
 
 `get_track_number_from_animation(animation: OpenVATAnimationTrack) -> int`
 
-To get the animation track index from the start and end frames, use:
-
-`get_track_number_from_start_end_frames(start: int, end: int)`
-
 To get the currently playing animation track index from the instance, use:
 
-`get_track_number_from_instance(instance_id: int)`
+`get_track_number_from_instance(instance_id: int) -> int`
+
+To get the animation track index from the start and end frames, use:
+
+`get_track_number_from_start_end_frames(start: int, end: int) -> int`
 
 ### Instanced `custom_data` information
 
