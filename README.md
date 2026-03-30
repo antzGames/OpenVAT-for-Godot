@@ -77,9 +77,9 @@ OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanc
 8. (Optional) Drag or configure any albedo, metallic, roghness, norma map textures into the provided shader paramters.
 9. Save your configued Mesh.
 
-Now this Mesh can be used in any `OpenVATMultiMeshInstance3D`
+✅Now this Mesh can be used in any `OpenVATMultiMeshInstance3D`
 
-This video will show you how to do these steps.
+🎞️This video will show you how to prepare your `Mesh` for the `OpenVATMultiMeshInstance3D` node.
 
 ### `OpenVATMultiMeshInstance3D` Properties
 
@@ -94,6 +94,8 @@ You can manually force the loading of the JSON file by click on the `Import JSON
 
 > [!NOTE]  
 > The JSON file is automatically imported on `_ready()` which means it runs every activation.  This makes sure that the latest JSON file is used.d
+
+🎞️This video will show you how to use `OpenVATMultiMeshInstance3D`.
 
 ### `OpenVATMultiMeshInstance3D` Update Functions
 
