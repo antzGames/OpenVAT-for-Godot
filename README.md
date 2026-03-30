@@ -90,12 +90,18 @@ OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanc
 - **OpenVAT JSON Config File**: `String` = the path to the JSON file exported by the OpenVAT Blender tool
 - **Min and Max Values**: `Vector3` = these values will be filled in when the OpenVAT JSON file is imported
 
+🎞️This video will show you how to use `OpenVATMultiMeshInstance3D`.
+
+<img width="414" height="410" alt="inspector" src="https://github.com/user-attachments/assets/af634458-9cb6-4ff0-b1df-a745c162a369" />
+
 You can manually force the loading of the JSON file by click on the `Import JSON` button in the inspector.
 
 > [!NOTE]  
 > The JSON file is automatically imported on `_ready()` which means it runs every activation.  This makes sure that the latest JSON file is used.d
 
-🎞️This video will show you how to use `OpenVATMultiMeshInstance3D`.
+The JSON importer outputs information on the console:
+
+<img width="1467" height="750" alt="output" src="https://github.com/user-attachments/assets/2a4bea60-f4e0-40d7-ab89-7c73de0d0037" />
 
 ### `OpenVATMultiMeshInstance3D` Update Functions
 
