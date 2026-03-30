@@ -33,7 +33,7 @@ https://github.com/user-attachments/assets/d9d33d3f-720a-48d8-9bb5-6a15169e03d9
 - Mesh must be less than 8192 vertices.
 - Total number of frames for all animations must be less than 4096.
 - No blending or mixing of animation tracks.
-- Although the complete OpenVAT animation meta data is imported and stored in the `OpenVATMultiMeshInstance3D` node, `framerate` and `isLooping` are ignored. All animation tracks will use the same framerate.  All animation tracks will loop. Maybe in the future it will be used in the Godot OpenVAT solution.
+- Although the complete OpenVAT animation meta data is imported and stored in the `OpenVATMultiMeshInstance3D` node, `framerate` and `isLooping` are ignored. All animation tracks will use the same framerate.  All animation tracks will loop. .
 - `MultiMeshInstance3D` `custom_data` is used by this plugin so you will not have access to use it.
 
 ## Requirements
