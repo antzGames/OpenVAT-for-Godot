@@ -108,7 +108,7 @@ The JSON importer outputs information on the console:
 
 ### `OpenVATMultiMeshInstance3D` Update Functions
 
-If you want to change the track for a specific instance, use:
+If you want to change the animation track for a specific instance, use:
 
 `update_instance_track(instance_id: int, track_number: int)`
 
@@ -123,7 +123,7 @@ track are not syncronized, use:
 
 You can also change all parameters of a specific instance by using:
 
-`update_instance(instance_id: int,animation_offset: float, track_number: int, alpha: float)`
+`update_instance(instance_id: int, animation_offset: float, track_number: int, alpha: float)`
 
 You can also change ALL instances by using:
 
