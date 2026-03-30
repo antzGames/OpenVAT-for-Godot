@@ -40,7 +40,7 @@ All animation tracks will loop.
 ## Requirements
 
 - Godot 4.5+
-- Blender 4.2+
+- Blender 4.2+ with the [OpenVAT Extension](https://extensions.blender.org/add-ons/openvat/) installed.
 
 ## Installing this plugin
 
