@@ -61,7 +61,7 @@ This plugin provides a new node called `OpenVATMultiMeshInstance3D` which inheri
 > [!IMPORTANT]  
 > Crucial information necessary for to use the `OpenVATMultiMeshInstance3D` node.
 
-1. Not going to explain how to use OpenVAT Blender tool, as the OpenVAT developer has hours of videos demonstrating how to use it.
+1. Not going to explain how to use OpenVAT Blender tool, as the OpenVAT developer has hours of [videos](https://www.youtube.com/@LukeStilson) demonstrating how to use it.
 However, the Godot version of the OpenVAT shader assumes you exported your model in Blender with the OpenVAT tool using these settings:
 	- `Vertex Normals` = `Packed`
 	- `Use Single Row` checked
