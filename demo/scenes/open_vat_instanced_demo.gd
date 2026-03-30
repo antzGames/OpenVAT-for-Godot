@@ -24,13 +24,22 @@ extends Node3D
 @export var base_scale: float = 1.0
 @export var max_scale: float = 1.5
 
+@export_category("Instance Animation")
+@export var cycle_animations: bool = false
+@export var cycle_all_instances: bool = true
+@export_range(0.01, 5, 0.01) var cycle_time: float = 3
+var anim_timer: float
+
 @export_category("Camera")
 @export var rotate_camera: bool
+@export_range(0.5, 5, 0.1) var camera_speed: float = 1.0
 @export var camera_position: Vector3 = Vector3(0,20,55)
 @export var camera_lookat: Vector3 = Vector3(0,0,0)
 
 var node3D: Node3D = Node3D.new()
 var location: Vector3 = Vector3.ZERO
+var timer: float
+var counter: int
 
 func _ready() -> void:
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if v_sync_check_button.button_pressed else DisplayServer.VSYNC_DISABLED)
@@ -47,14 +56,18 @@ func setupInstances():
 	var s: float = sqrt(vat_multi_mesh_instance_3d.multimesh.instance_count) * 5
 	mesh_floor.mesh.size = Vector2(s,s) 
 	
-	var a: int = 0 # animation track number
+	var count: int = 0 # animation track number
 	for instance in vat_multi_mesh_instance_3d.multimesh.instance_count:
 		# randomize the animation offset
 		vat_multi_mesh_instance_3d.update_instance_animation_offset(instance, randf())
 		# set the animation track number
-		vat_multi_mesh_instance_3d.update_instance_track(instance, a)
+		vat_multi_mesh_instance_3d.update_instance_track(instance, count)
 		# set alpha to 1.0 -> you can fade out a specific instance by setting alpha to 0
 		vat_multi_mesh_instance_3d.update_instance_alpha(instance, 1.0)
+		
+		# OR you can just use one call:
+		#vat_multi_mesh_instance_3d.update_instance(instance, randf(), count, 1.0)
+		
 		# randomize scale, rotation, and location
 		randomizeInstance(instance)
 		
@@ -71,15 +84,15 @@ func setupInstances():
 			#var tn_se: int = vat_multi_mesh_instance_3d.get_track_number_from_start_end_frames(track.startFrame, track.endFrame)
 			#
 			## Print the test results/
-			#print(track, " Tests: ",
+			#print(track, " >>> Tests: ",
 				## is the assigned animation object correct                     Are all three track_number methods the same?
 				#track == vat_multi_mesh_instance_3d.animation_tracks[tn], " ", bool(tn == tn_anim and tn == tn_se))
 			#
 		
 		# this cycles through each animation track number
-		a += 1
-		if a > vat_multi_mesh_instance_3d.animation_tracks.size() - 1:
-			a = 0
+		count += 1
+		if count > vat_multi_mesh_instance_3d.animation_tracks.size() - 1:
+			count = 0
 		
 func randomizeInstance(i: int):
 	var x = mesh_floor.mesh.size.x / 2
@@ -102,7 +115,19 @@ func randomizeInstance(i: int):
 
 func _process(delta: float) -> void:
 	if rotate_camera:
-		pivot.rotate_y(delta * 0.1)
+		pivot.rotate_y(delta * 0.1 * camera_speed)
+	
+	if cycle_animations:
+		anim_timer += delta
+		counter += 1
+		if counter > vat_multi_mesh_instance_3d.instance_count -1: counter = 0
+		
+		if cycle_all_instances and anim_timer > cycle_time: 
+			anim_timer = 0
+			vat_multi_mesh_instance_3d.play_next_track_all_instances()
+		elif anim_timer > cycle_time: 
+			anim_timer = 0
+			vat_multi_mesh_instance_3d.play_next_track_instance(counter)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("next_scene"):

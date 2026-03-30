@@ -99,15 +99,6 @@ func _process(delta: float) -> void:
 
 #region Set/Update functions
 
-## Update ALL INSTANCES with the provided animation_offset, track_number, and alpha
-## unless rand_anim_offset = false, where it sets the animation_offset to 0
-func update_all_instances(animation_offset: float, track_number: int, alpha: float):
-	alpha = clampf(alpha, 0.0, 1.0)
-	for instance in multimesh.instance_count:
-		update_instance_animation_offset(instance, animation_offset)
-		update_instance_track(instance, track_number)
-		update_instance_alpha(instance, alpha)
-
 ## Updates the current instance_id with the provided animation_offset (0..1),
 ## unless rand_anim_offset = false, where it sets the animation_offset to 0
 func update_instance_animation_offset(instance_id: int, animation_offset: float):
@@ -121,6 +112,9 @@ func update_instance_animation_offset(instance_id: int, animation_offset: float)
 
 ## Updates the current instance_id with the provided track_number (0..animation_tracks.size()- 1)
 func update_instance_track(instance_id: int, track_number: int):
+	if track_number < 0 or track_number > animation_tracks.size() - 1: 
+		printerr("[OpenVATMultiMeshInstance3D] -> update_instance_track(instance_id: int, track_number: int)]: track_number is out of bounds.")
+		return 
 	custom_data = multimesh.get_instance_custom_data(instance_id)
 	custom_data.g = animation_tracks[track_number].startFrame 
 	custom_data.b = animation_tracks[track_number].endFrame
@@ -132,6 +126,37 @@ func update_instance_alpha(instance_id: int, alpha: float):
 	custom_data = multimesh.get_instance_custom_data(instance_id)
 	custom_data.a = alpha
 	multimesh.set_instance_custom_data(instance_id, custom_data)
+
+## Update the instance_id with the provided animation_offset, track_number, and alpha
+## unless rand_anim_offset = false, where it sets the animation_offset to 0
+func update_instance(instance_id: int,animation_offset: float, track_number: int, alpha: float):
+	update_instance_animation_offset(instance_id, animation_offset)
+	update_instance_track(instance_id, track_number)
+	update_instance_alpha(instance_id, alpha)
+
+## Update ALL INSTANCES with the provided animation_offset, track_number, and alpha
+## unless rand_anim_offset = false, where it sets the animation_offset to 0
+func update_all_instances(animation_offset: float, track_number: int, alpha: float):
+	for instance in multimesh.instance_count:
+		update_instance_animation_offset(instance, animation_offset)
+		update_instance_track(instance, track_number)
+		update_instance_alpha(instance, alpha)
+
+## Plays the next animation track for the provided instance_id
+func play_next_track_instance(instance_id: int):
+	var track_number: int = get_track_number_from_instance(instance_id)
+	track_number += 1
+	if track_number > animation_tracks.size() - 1: track_number = 0
+	update_instance_track(instance_id, track_number)
+	
+## Plays the next animation track for ALL INSTANCES
+func play_next_track_all_instances():
+	var track_number : int
+	for instance in multimesh.instance_count:
+		track_number = get_track_number_from_instance(instance)
+		track_number += 1
+		if track_number > animation_tracks.size() - 1: track_number = 0
+		update_instance_track(instance, track_number)
 
 # Get functions
 

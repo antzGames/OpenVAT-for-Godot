@@ -15,4 +15,4 @@ func set_track(name_in: String, start_in: int, end_in: int, framerate_in: int, l
 	isLooping = loop
 	
 func _to_string() -> String:
-	return str(name, " ", startFrame, " ", endFrame, " ", framerate, " ", isLooping)
+	return str("Animation Track Name: ",name, "   startFrame: ", startFrame, "    endFrame: ", endFrame, "   framerate: ", framerate, "   isLooping: ", isLooping)

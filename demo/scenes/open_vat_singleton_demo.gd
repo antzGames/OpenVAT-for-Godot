@@ -44,6 +44,5 @@ func _on_shadows_check_button_toggled(toggled_on: bool) -> void:
 func _on_v_sync_check_button_toggled(toggled_on: bool) -> void:
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if toggled_on else DisplayServer.VSYNC_DISABLED)
 
-
 func _on_speed_check_button_value_changed(value: float) -> void:
 	demo_mesh.mesh.surface_get_material(0).set_shader_parameter("speed", value)

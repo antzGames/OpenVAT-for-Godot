@@ -1,6 +1,5 @@
 extends OpenVATInstanceDemo
 
-var timer: float
 var isFadeOut: bool = true
 var x: float = -30
 var z: float = 0
