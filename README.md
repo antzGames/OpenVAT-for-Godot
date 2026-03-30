@@ -143,6 +143,19 @@ Animation meta data is stored in an array of `OpenVATAnimationTrack`:
 ```gdscript
 var animation_tracks: Array[OpenVATAnimationTrack] 
 ```
+
+This is the `OpenVATAnimationTrack` class :
+```gdscript
+class_name OpenVATAnimationTrack
+extends RefCounted
+
+var name: String
+var startFrame: int
+var endFrame: int
+var framerate: int
+var isLooping: bool
+```
+
 To get the `OpenVATAnimationTrack` object from an instance:
 
 `get_animation_from_instance(instance_id: int) -> OpenVATAnimationTrack`
