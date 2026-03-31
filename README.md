@@ -69,7 +69,7 @@ However, the Godot version of the OpenVAT shader assumes you exported your model
 	- `Model Format` = `glTF Binary`
 2. The Blender OpenVAT Tool output will be 3 files. Copy these 3 files into you Godot project:
 	- a `.glb` file - single mesh version of your 3D model
-	- a `.exr` file - vertex and normal (packed together) encoded Vertex Animation Texture (VAT)
+	- a `.exr` file - vertex and normal (packed together) encoded Vertex Animation Texture (VAT)gitdd
 	- a `.json` file - contains the mix/max extents and animation meta data for your model
 3. Make sure the `.exr` file is re-imported with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
 4. Open the `.glb` model, go to the Meshes tab, and on the right select `Save to File` option. Re-import.
@@ -191,12 +191,13 @@ Pressing F3 will display more FPS information.
 
 MSAA 2x is set at the project level.  Turning off MSAA improves performance.
 
-
 ## Using the OpenVAT Godot shader on its own
 
 I have provied the official OpenVAT Godot shader for you to use on your own custom solutions.
 
 The unaltered shader is in: `res://addons/openvat_animated/shaders/openvat_singleton_shader.gdshader`
+
+The most up to date version can be downloaded from the OpenVAT GitHub at: https://github.com/sharpen3d/openvat/blob/main/OpenVAT-Engine_Tools/GLSL/VertexAnimationPBR-GLSL.gdshader
 
 You will have to set the min/max values, and all other shader parameters manually. 
 Some of the demo scenes ('cloth.tscn', 'jello.tscn') use this, so look at the code to see how it is done.
