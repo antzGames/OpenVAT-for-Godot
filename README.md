@@ -82,7 +82,7 @@ OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanc
 
 ✅This `Mesh` can now be used in any `OpenVATMultiMeshInstance3D`
 
-🎞️This video will show you how to prepare your `Mesh` for the `OpenVATMultiMeshInstance3D` node.
+🎞️This [video](https://youtu.be/0Ok142yRlog?si=Lp9F-twPYnpHOYs8&t=601) will show you how to prepare your `Mesh` for the `OpenVATMultiMeshInstance3D` node.
 
 ### `OpenVATMultiMeshInstance3D` Properties
 
@@ -93,7 +93,7 @@ OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanc
 - **OpenVAT JSON Config File**: `String` = the path to the JSON file exported by the OpenVAT Blender tool
 - **Min and Max Values**: `Vector3` = these values will be filled in when the OpenVAT JSON file is imported
 
-🎞️This video will show you how to use `OpenVATMultiMeshInstance3D`.
+🎞️This [video](https://youtu.be/0Ok142yRlog?si=4vIiX3uICbk5h6a3&t=736) will show you how to use `OpenVATMultiMeshInstance3D`.
 
 <img width="414" height="410" alt="inspector" src="https://github.com/user-attachments/assets/af634458-9cb6-4ff0-b1df-a745c162a369" />
 
