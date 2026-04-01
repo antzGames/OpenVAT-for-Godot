@@ -60,10 +60,10 @@ func _init() -> void:
 
 func _get_configuration_warnings(): # display the warning on the scene dock
 	var warnings = []
-	if animation_tracks.size() == 0:
-		warnings.push_back('No animation tracks defined')
-	if multimesh and !multimesh.mesh:
-		warnings.push_back('No mesh assigned to multimesh')	
+	if !exported_mesh:
+		warnings.push_back('No exported mesh assigned')
+	if !openvat_json_config_file:
+		warnings.push_back('No OpenVAT JSON file assigned')
 	return warnings
 	
 func _validate_property(property: Dictionary): # update the config warnings
@@ -203,8 +203,8 @@ func import_json():
 	if !multimesh:
 		_create_multimesh()
 		print_rich("Multimesh instance created.")
-	elif !multimesh.mesh: 
-		printerr("No mesh assigned to your multimesh. Please configure your mesh and shader.")
+	elif !exported_mesh:
+		printerr("No exported mesh assigned.")
 		return
 
 	if !openvat_json_config_file or openvat_json_config_file.length() == 0:

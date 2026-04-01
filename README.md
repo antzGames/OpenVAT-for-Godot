@@ -193,9 +193,10 @@ MSAA 2x is set at the project level.  Turning off MSAA improves performance.
 
 ## Using the OpenVAT Godot shader on its own
 
-I have provied the official OpenVAT Godot shader for you to use on your own custom solutions.
+I have provied the official OpenVAT Godot shader for you to use on your own custom solutions.  Remember that the 
+official OpenVAT Godot shader does not have support for animations.  
 
-The unaltered shader is in: `res://addons/openvat_animated/shaders/openvat_singleton_shader.gdshader`
+The unaltered OpenVAT Godot shader is in: `res://addons/openvat_animated/shaders/openvat_singleton_shader.gdshader`
 
 The most up to date version can be downloaded from the OpenVAT GitHub at: https://github.com/sharpen3d/openvat/blob/main/OpenVAT-Engine_Tools/GLSL/VertexAnimationPBR-GLSL.gdshader
 

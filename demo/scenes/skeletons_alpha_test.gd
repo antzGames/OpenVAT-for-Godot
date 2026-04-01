@@ -5,6 +5,9 @@ var x: float = -30
 var z: float = 0
 
 func _process(delta: float) -> void:
+	if rotate_camera:
+		pivot.rotate_y(delta * 0.1 * camera_speed)	
+	
 	timer += delta
 	
 	if isFadeOut: # fade out
