@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://3x6w01reic4l"]
 
-[ext_resource type="Script" uid="uid://b27tc0i4ry488" path="res://demo/scenes/skeletons_alpha_test.gd" id="1_t7hae"]
-[ext_resource type="PackedScene" uid="uid://cfhh2cys178e6" path="res://demo/scenes/soda_can.tscn" id="2_dfxq4"]
-[ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="3_eolrw"]
-[ext_resource type="Texture2D" uid="uid://chovdonrf753h" path="res://antz_512.png" id="6_8fo40"]
+[ext_resource type="Script" uid="uid://b27tc0i4ry488" path="res://demo/scenes/skeletons_alpha_test.gd" id="1_5t88m"]
+[ext_resource type="PackedScene" uid="uid://bypvmrpum6glw" path="res://demo/scenes/skeletons_track_change.tscn" id="2_5t88m"]
+[ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="3_fb0fd"]
+[ext_resource type="Texture2D" uid="uid://chovdonrf753h" path="res://antz_512.png" id="4_c7ufu"]
+[ext_resource type="ArrayMesh" uid="uid://csbhupiywu4pb" path="res://demo/assets/mage/mage_mesh.res" id="5_m34io"]
+[ext_resource type="Script" uid="uid://sp8krhj7tq5i" path="res://addons/openvat_animated/src/open_vat_multi_mesh_instance_3d.gd" id="6_66eoc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7n746"]
 
@@ -16,17 +18,22 @@ sky = SubResource("Sky_03w7h")
 ambient_light_source = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwhhi"]
-albedo_texture = ExtResource("3_eolrw")
+albedo_texture = ExtResource("3_fb0fd")
 uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m56k3"]
 material = SubResource("StandardMaterial3D_uwhhi")
 size = Vector2(200, 200)
 
-[node name="EmptyScene" type="Node3D" unique_id=391254406]
-script = ExtResource("1_t7hae")
-title = "Empty Test Scene"
-next_scene = ExtResource("2_dfxq4")
+[sub_resource type="MultiMesh" id="MultiMesh_dfxq4"]
+transform_format = 1
+use_custom_data = true
+mesh = ExtResource("5_m34io")
+
+[node name="MageYoutubeDemo" type="Node3D" unique_id=391254406]
+script = ExtResource("1_5t88m")
+title = "Mage YouTube Demo"
+next_scene = ExtResource("2_5t88m")
 randomize_scale = true
 base_scale = 2.0
 max_scale = 2.1
@@ -158,8 +165,18 @@ offset_right = -3.0
 offset_bottom = 42.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("6_8fo40")
+texture = ExtResource("4_c7ufu")
 expand_mode = 1
+
+[node name="OpenVATMultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=1740121201]
+multimesh = SubResource("MultiMesh_dfxq4")
+script = ExtResource("6_66eoc")
+exported_mesh = ExtResource("5_m34io")
+instance_count = 35
+openvat_json_config_file = "res://demo/assets/mage/VAT_Collection-remap_info.json"
+min_values = Vector3(-2.3, -2.1, -0.9)
+max_values = Vector3(2.3, 3, 1.4)
+metadata/_custom_type_script = "uid://sp8krhj7tq5i"
 
 [connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows/ShadowsCheckButton" to="." method="_on_shadows_check_button_toggled"]
 [connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows2/VSyncCheckButton" to="." method="_on_v_sync_check_button_toggled"]
