@@ -1,0 +1,41 @@
+{
+	"os-remap": {
+		"Min": [
+			-2.3,
+			-2.1,
+			-0.9
+		],
+		"Max": [
+			2.3,
+			3.0,
+			1.4
+		],
+		"Frames": 161
+	},
+	"animations": {
+		"Cheer": {
+			"startFrame": 1,
+			"endFrame": 41,
+			"framerate": 24,
+			"looping": true
+		},
+		"Attack": {
+			"startFrame": 42,
+			"endFrame": 82,
+			"framerate": 24,
+			"looping": true
+		},
+		"Spin": {
+			"startFrame": 83,
+			"endFrame": 141,
+			"framerate": 24,
+			"looping": true
+		},
+		"Run": {
+			"startFrame": 142,
+			"endFrame": 161,
+			"framerate": 24,
+			"looping": true
+		}
+	}
+}
