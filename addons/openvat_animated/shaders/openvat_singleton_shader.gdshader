@@ -22,8 +22,8 @@ uniform vec3 max_values;
 uniform bool playing = true;
 /** Animation frame shown when paused */
 uniform int pause_frame;
-/** Number of frames per second. The default value in Blender is 24 (see "Scene > Format > Frame Rate" in Blender). */
-uniform float speed = 24.0;
+/** Number of frames per second. The default value in Blender is 30 (see "Scene > Format > Frame Rate" in Blender). */
+uniform float speed = 30.0;
 group_uniforms;
 
 group_uniforms Albedo;

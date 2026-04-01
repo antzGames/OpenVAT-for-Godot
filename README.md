@@ -67,16 +67,17 @@ However, the Godot version of the OpenVAT shader assumes you exported your model
 	- `Use Single Row` checked
 	- `Export Model` checked
 	- `Model Format` = `glTF Binary`
+	- `Image Format` = `EXR16`
 2. The Blender OpenVAT Tool output will be 3 files. Copy these 3 files into you Godot project:
 	- a `.glb` file - single mesh version of your 3D model
 	- a `.exr` file - vertex and normal (packed together) encoded Vertex Animation Texture (VAT)
 	- a `.json` file - contains the mix/max extents and animation meta data for your model
 3. Make sure the `.exr` file is re-imported with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
-4. Open the `.glb` model, go to the Meshes tab, and on the right select `Save to File` option. Re-import.
+4. Open the `.glb` model, go to the Meshes tab, select the mesh, then on the right select `Save to File` option. Re-import.
 5. Open your newly saved `Mesh` resource.  In `Surface 0`, change the `Material` to a `ShaderMaterial` and assign the 
 OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanced_shader.gdshader`
 6. Drag the `.exr` OpenVAT file into the `Vertex Animation Texture` shader parameter.
-7. Set the `Speed` shader parameter to the FPS of the animation that was in Blender (defaults to 24).
+7. Set the `Speed` shader parameter to the FPS of the animation that was in Blender (defaults to 30).
 8. (Optional) Drag or configure any albedo, metallic, roghness, normal map textures into the provided shader paramters.
 9. Save your configured Mesh.
 
@@ -100,7 +101,7 @@ OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanc
 You can manually force the loading of the JSON file by click on the `Import JSON` button in the inspector.
 
 > [!NOTE]  
-> The JSON file is automatically imported on `_ready()` which means it runs every activation.  This makes sure that the latest JSON file is used.
+> The JSON file is automatically imported on `_ready()` which means it imports on every activation.  This makes sure that the latest JSON file is used.
 
 The JSON importer outputs information on the console:
 
