@@ -1,5 +1,10 @@
 # OpenVAT for Godot + Animated MultiMeshInstance3D support
 
+> [!Note]
+> I am waiting for written confirmation directly from the OpenVAT Blender Toolkit developer that my Godot Plugin can use a MIT license.  I will change my plugin license from AGPL to MIT once I get written confirmation.
+
+The only reason why I set it to AGPL initially, is because I did not want any legal risks from OpenVAT in the future.
+
 A plugin that provides [OpenVAT](https://openvat.org/) support to Godot.
 
 OpenVAT is a Blender-native toolkit for baking Vertex Animation Textures (VATs) 
