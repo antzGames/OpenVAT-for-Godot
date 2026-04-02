@@ -187,6 +187,19 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 - `custom_data.b` = **animation end frame**
 - `custom_data.a` = **alpha of mesh**: used to fade in/out a unique instance
 
+## Common Issues
+
+❓**Question**: My model is all white, with no colors or textures. 💡**Answer**: You forgot to add Albedo, Metallic, Roughness, Normal Map textures that came with the original model to the shader.
+
+❓**Question**: My model's verticies are cracked or all over the place. 💡**Answer**: Re-import your VAT texture (`.exr` file) with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
+
+❓**Question**: My animations still looked deformed. 💡**Answer**: This is a Blender/OpenVAT usage issue, and it could be caused by many things.  Check out the OpenVAT [videos](https://www.youtube.com/@LukeStilson), or post an issue on OpenVAT on [GitHub](https://github.com/sharpen3d/openvat). 
+
+❓**Question**: How do I implement a static pose in an animation track:
+ 
+  - 💡**Answer 1**: Create a 3 frame action on your NLA strip in Blender with each keyframe being the same, then do an OpenVAT export, and re-import into Godot.  The shader will loop these 3 frames, and look like the model is static because the vertext positions have not moved. 
+  - 💡**Answer 2**: Manually encode another animation track with the same startFrame and endFrame, then do an OpenVAT export, and re-import into Godot. (TODO: test this)
+
 ## Demo
 
 A demo is provided.  Just run the project.  Pressing SPACE or F1 will load the next scene.
@@ -205,7 +218,7 @@ The unaltered OpenVAT Godot shader is in: `res://addons/openvat_animated/shaders
 The most up to date version can be downloaded from the OpenVAT GitHub at: https://github.com/sharpen3d/openvat/blob/main/OpenVAT-Engine_Tools/GLSL/VertexAnimationPBR-GLSL.gdshader
 
 You will have to set the min/max values, and all other shader parameters manually. 
-Some of the demo scenes ('cloth.tscn', 'jello.tscn') use this, so look at the code to see how it is done.
+Some of the demo scenes (`cloth.tscn`, `jello.tscn`) use this, so look at the code to see how it is done.
 
 ## Asset Attributions
 
