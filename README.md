@@ -55,6 +55,8 @@ Maybe if this plugin gets noticed, I will add it to Godot's AssetLib.  Until the
 - Go to `Project > Project Settings > Plugins` and enable **OpenVAT Animated MultiMeshInstance3D Plugin**.
 - Add the new `OpenVATMultiMeshInstance3D` node into a scene.
 
+<img width="1433" height="315" alt="image" src="https://github.com/user-attachments/assets/914a90a5-723c-4e14-b7c3-db2c950bdc76" />
+
 ## `OpenVATMultiMeshInstance3D`
 
 This plugin provides a new node called `OpenVATMultiMeshInstance3D` which inherits `MultiMeshInstance3D`.
@@ -189,9 +191,9 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 
 ## Common Issues
 
-❓**Question**: My model is all white, with no colors or textures. 💡**Answer**: You forgot to add Albedo, Metallic, Roughness, Normal Map textures that came with the original model to the shader.
+❓**Question**: My mesh is all white, with no colors or textures. 💡**Answer**: You forgot to add Albedo, Metallic, Roughness, Normal Map textures that came with the original model to the shader.
 
-❓**Question**: My model's verticies are cracked or all over the place. 💡**Answer**: Re-import your VAT texture (`.exr` file) with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
+❓**Question**: My mesh's verticies are cracked or all over the place. 💡**Answer**: Re-import your VAT texture (`.exr` file) with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
 
 ❓**Question**: My animations still looked deformed. 💡**Answer**: This is a Blender/OpenVAT usage issue, and it could be caused by many things.  Check out the OpenVAT [videos](https://www.youtube.com/@LukeStilson), or post an issue on OpenVAT on [GitHub](https://github.com/sharpen3d/openvat). 
 
