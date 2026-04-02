@@ -204,11 +204,11 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 
 ## Demo
 
-A demo is provided.  Just run the project.  Pressing SPACE or F1 will load the next scene.
+A demo is provided.  Just run the project.  Pressing `SPACE` or `F1` key will load the next scene.
 
-Pressing F3 will display more FPS information.
+Pressing the `F3` key will display more FPS information.
 
-MSAA 2x is set at the project level.  Turning off MSAA improves performance.
+`MSAA 2x` is set at the project level.  Turning off `MSAA` improves performance.
 
 ## Using the OpenVAT Godot shader on its own
 
