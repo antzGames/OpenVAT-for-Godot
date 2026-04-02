@@ -2,7 +2,7 @@
 
 A plugin that provides [OpenVAT](https://openvat.org/) support to Godot.
 
-OpenVAT is a Blender-native toolkit for baking Vertex Animation Textures (VATs) — 
+OpenVAT is a Blender-native toolkit for baking Vertex Animation Textures (VATs) 
 enabling engines and DCCs to seamlessly play back complex animated deformation as 
 vertex offsets on GPU via low-cost vertex shaders. OpenVAT GitHub: https://github.com/sharpen3d/openvat
 
