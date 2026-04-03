@@ -216,6 +216,7 @@ I have provied the official OpenVAT Godot shader for you to use on your own cust
 official OpenVAT Godot shader does not have support for animations.  
 
 The unaltered OpenVAT Godot shader is in: `res://addons/openvat_animated/shaders/openvat_singleton_shader.gdshader`
+See the MIT license of rthis shader below.
 
 The most up to date version can be downloaded from the OpenVAT GitHub at: https://github.com/sharpen3d/openvat/blob/main/OpenVAT-Engine_Tools/GLSL/VertexAnimationPBR-GLSL.gdshader
 
@@ -224,7 +225,7 @@ Some of the demo scenes (`cloth.tscn`, `jello.tscn`) use this, so look at the co
 
 ## OpenVAT MIT License for shader in `OpenVAT-Engine_Tools`
 
-This plugin uses a modified OpenVAT GLSL shader in the `OpenVAT-Engine_Tools` folder of 
+This plugin uses a modified OpenVAT GLSL shader from the `OpenVAT-Engine_Tools` folder of 
 the OpenVAT GitHub: https://github.com/sharpen3d/openvat/tree/main/OpenVAT-Engine_Tools
 
 This comes with a MIT license:
