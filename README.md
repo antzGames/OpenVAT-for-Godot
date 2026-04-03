@@ -222,6 +222,32 @@ The most up to date version can be downloaded from the OpenVAT GitHub at: https:
 You will have to set the min/max values, and all other shader parameters manually. 
 Some of the demo scenes (`cloth.tscn`, `jello.tscn`) use this, so look at the code to see how it is done.
 
+## OpenVAT MIT License for shader in `OpenVAT-Engine_Tools`
+
+This plugin uses a modified OpenVAT GLSL shader in the `OpenVAT-Engine_Tools` folder of 
+the OpenVAT GitHub: https://github.com/sharpen3d/openvat/tree/main/OpenVAT-Engine_Tools
+
+This comes with a MIT license:
+
+```
+MIT License
+
+Copyright (c) 2024 Luke Stilson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+This license applies only to the recursive contents of this folder (`OpenVAT-Engine_Tools`) and
+does not affect the licensing of the core OpenVAT tool, which is licensed under GPL-3.0.
+```
+
 ## Asset Attributions
 
 [Skeleton](https://kaylousberg.itch.io/kaykit-skeletons) by Kay Lousberg - [CC0 License](http://creativecommons.org/publicdomain/zero/1.0/)
