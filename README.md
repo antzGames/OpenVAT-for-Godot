@@ -73,7 +73,7 @@ However, the Godot version of the OpenVAT shader assumes you exported your model
 	- `Export Model` checked
 	- `Model Format` = `glTF Binary`
 	- `Image Format` = `EXR16`
-2. The Blender OpenVAT Tool output will be 3 files. Copy these 3 files into you Godot project:
+2. The Blender OpenVAT Tool output will be 3 files. Copy these 3 files into your Godot project:
 	- a `.glb` file - single mesh version of your 3D model
 	- a `.exr` file - vertex and normal (packed together) encoded Vertex Animation Texture (VAT)
 	- a `.json` file - contains the mix/max extents and animation meta data for your model
