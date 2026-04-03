@@ -73,7 +73,7 @@ However, the Godot version of the OpenVAT shader assumes you exported your model
 	- `Export Model` checked
 	- `Model Format` = `glTF Binary`
 	- `Image Format` = `EXR16`
-2. The Blender OpenVAT Tool output will be 3 files. Copy these 3 files into you Godot project:
+2. The Blender OpenVAT Tool output will be 3 files. Copy these 3 files into your Godot project:
 	- a `.glb` file - single mesh version of your 3D model
 	- a `.exr` file - vertex and normal (packed together) encoded Vertex Animation Texture (VAT)
 	- a `.json` file - contains the mix/max extents and animation meta data for your model
@@ -216,11 +216,38 @@ I have provied the official OpenVAT Godot shader for you to use on your own cust
 official OpenVAT Godot shader does not have support for animations.  
 
 The unaltered OpenVAT Godot shader is in: `res://addons/openvat_animated/shaders/openvat_singleton_shader.gdshader`
+See the MIT license of rthis shader below.
 
 The most up to date version can be downloaded from the OpenVAT GitHub at: https://github.com/sharpen3d/openvat/blob/main/OpenVAT-Engine_Tools/GLSL/VertexAnimationPBR-GLSL.gdshader
 
 You will have to set the min/max values, and all other shader parameters manually. 
 Some of the demo scenes (`cloth.tscn`, `jello.tscn`) use this, so look at the code to see how it is done.
+
+## OpenVAT MIT License for shader in `OpenVAT-Engine_Tools`
+
+This plugin uses a modified OpenVAT GLSL shader from the `OpenVAT-Engine_Tools` folder of 
+the OpenVAT GitHub: https://github.com/sharpen3d/openvat/tree/main/OpenVAT-Engine_Tools
+
+This comes with a MIT license:
+
+```
+MIT License
+
+Copyright (c) 2024 Luke Stilson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+This license applies only to the recursive contents of this folder (`OpenVAT-Engine_Tools`) and
+does not affect the licensing of the core OpenVAT tool, which is licensed under GPL-3.0.
+```
 
 ## Asset Attributions
 
