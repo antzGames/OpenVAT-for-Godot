@@ -73,7 +73,7 @@ However, the Godot version of the OpenVAT shader assumes you exported your model
 2. The Blender OpenVAT Tool output will be 3 files. Copy these 3 files into your Godot project:
 	- a `.glb` file - single mesh version of your 3D model
 	- a `.exr` file - vertex and normal (packed together) encoded Vertex Animation Texture (VAT)
-	- a `.json` file - contains the mix/max extents and animation meta data for your model
+	- a `.json` file - contains the min/max extents and animation meta data for your model
 3. Make sure the `.exr` file is re-imported with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
 4. Open the `.glb` model, go to the Meshes tab, select the mesh, then on the right select `Save to File` option. Re-import.
 5. Open your newly saved `Mesh` resource.  In `Surface 0`, change the `Material` to a `ShaderMaterial` and assign the 
