@@ -213,7 +213,7 @@ I have provied the official OpenVAT Godot shader for you to use on your own cust
 official OpenVAT Godot shader does not have support for animations.  
 
 The unaltered OpenVAT Godot shader is in: `res://addons/openvat_animated/shaders/openvat_singleton_shader.gdshader`
-See the MIT license of rthis shader below.
+See the MIT license for this shader below.
 
 The most up to date version can be downloaded from the OpenVAT GitHub at: https://github.com/sharpen3d/openvat/blob/main/OpenVAT-Engine_Tools/GLSL/VertexAnimationPBR-GLSL.gdshader
 
