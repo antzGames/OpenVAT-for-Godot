@@ -114,7 +114,7 @@ You can manually force the loading of the JSON file by click on the `Import JSON
 > The JSON file is automatically imported on `_ready()` which means it imports on every activation.  This makes sure that the latest JSON file is used.
 
 > [!NOTE]  
-> If no animation track defined in the OpenVAT JSON file, then a `Default` animation track is created on import.
+> If no animation tracks are defined in the OpenVAT JSON file, then a `Default` animation track is created on import.
 
 The JSON importer outputs information on the console:
 
