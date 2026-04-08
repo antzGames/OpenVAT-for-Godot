@@ -30,7 +30,7 @@ https://github.com/user-attachments/assets/d9d33d3f-720a-48d8-9bb5-6a15169e03d9
 
 ## Limitations
 
-- Mesh must be less than 8192 vertices.
+- Mesh must be less than 8192 vertices. Verticies count needs to be constant across all animation frames.
 - Total number of frames for all animations must be less than 4096.
 - No blending or mixing of animation tracks.
 - Although the complete OpenVAT animation meta data is imported and stored in the `OpenVATMultiMeshInstance3D` node, `framerate` and `isLooping` are ignored. All animation tracks will use the same framerate.
@@ -39,11 +39,11 @@ All animation tracks will loop.
 
 ## Product Roadmap
 
-| Version  | Status | Features |
+| Version | Status | Features |
 |---|---|---|
 | 0.0.1 | ✅Released | OpenVAT JSON file import. Basic instanced animation track control. Instanced alpha channel control.  OpenVATMultimeshInstance3D node. |
-| 0.0.2 | 💡Analysis | Instanced `isLooping` and `framerate` support using the `INSTANCE_COLOR.r` field. |
-| 0.0.3 | 📈Planning | Animation blending support using the `INSTANCE_COLOR.gba` fields for second animation track's `start/end/timestamp` data. Blending transition duration will be a global value. |
+| 0.1.0 | 💡Analysis | Instanced `isLooping` and `framerate` support using the `INSTANCE_COLOR.r` field. |
+| 0.2.0 | 📈Planning | Animation blending support using the `INSTANCE_COLOR.gba` fields for second animation track's `start/end/timestamp` data. Blending transition duration will be a global uniform. |
 
 ## Requirements
 
