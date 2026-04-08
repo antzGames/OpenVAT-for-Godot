@@ -43,7 +43,7 @@ All animation tracks will loop.
 |---|---|---|
 | 0.0.1 | ✅Released | OpenVAT JSON file import. Basic instanced animation track control. Instanced alpha channel control.  OpenVATMultimeshInstance3D node. |
 | 0.0.2 | 💡Analysis | Instanced `isLooping` and `framerate` support using the `INSTANCE_COLOR.r` field. |
-| 0.0.3 | 📈Planning | Animation blending support using the `INSTANCE_COLOR.gba` fields for second animation track `start/end/time_stamp` data |
+| 0.0.3 | 📈Planning | Animation blending support using the `INSTANCE_COLOR.gba` fields for second animation track's `start/end/timestamp` data. Blending transition duration will be a global value. |
 
 ## Requirements
 
