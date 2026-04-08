@@ -39,10 +39,11 @@ All animation tracks will loop.
 
 ## Product Roadmap
 
-| Version  | Status | Minimum Viable Product (MVP) |
+| Version  | Status | Features |
 |---|---|---|
-| 0.0.1 | - Released | OpenVAT JSON file import. |
-|  |  | - Basic instanced animation track control. |
+| 0.0.1 | ✅ Released | OpenVAT JSON file import. Basic instanced animation track control. Instanced alpha channel control.  OpenVATMultimeshInstance3D node. |
+| 0.0.2 | 💡 Analysis | Instanced `isLooping` and `framerate` support using the `INSTANCE_COLOR.r` field. |
+| 0.0.3 | 📈 Planning | Animation blending support using the `INSTANCE_COLOR.gba` fields for second animation track `start/end/time_stamp` data |
 
 ## Requirements
 
@@ -113,8 +114,7 @@ You can manually force the loading of the JSON file by click on the `Import JSON
 > The JSON file is automatically imported on `_ready()` which means it imports on every activation.  This makes sure that the latest JSON file is used.
 
 > [!NOTE]  
-> If no animation track defined in the OpenVAT JSON file, then a `Default` animation track is created.
-
+> If no animation track defined in the OpenVAT JSON file, then a `Default` animation track is created on import.
 
 The JSON importer outputs information on the console:
 
