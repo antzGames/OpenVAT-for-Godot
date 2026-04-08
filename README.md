@@ -17,7 +17,7 @@ https://github.com/user-attachments/assets/d9d33d3f-720a-48d8-9bb5-6a15169e03d9
 
 - Auto import of the OpenVAT JSON configuration file. This includes:
 	- minimum/maximun vectors
-	- all animation track meta data
+	- animation track meta data
 - Can support multiple baked in animation tracks (supports a total of 4096 combined frames).
 
 ## `OpenVATMultiMeshInstance3D` features
@@ -36,6 +36,13 @@ https://github.com/user-attachments/assets/d9d33d3f-720a-48d8-9bb5-6a15169e03d9
 - Although the complete OpenVAT animation meta data is imported and stored in the `OpenVATMultiMeshInstance3D` node, `framerate` and `isLooping` are ignored. All animation tracks will use the same framerate.
 All animation tracks will loop.
 - `MultiMeshInstance3D` `custom_data` is used by this plugin so you will not have access to use it.
+
+## Product Roadmap
+
+| Version  | Status | Minimum Viable Product (MVP) |
+|---|---|---|
+| 0.0.1 | - Released | OpenVAT JSON file import. |
+|  |  | - Basic instanced animation track control. |
 
 ## Requirements
 
@@ -105,6 +112,10 @@ You can manually force the loading of the JSON file by click on the `Import JSON
 > [!NOTE]  
 > The JSON file is automatically imported on `_ready()` which means it imports on every activation.  This makes sure that the latest JSON file is used.
 
+> [!NOTE]  
+> If no animation track defined in the OpenVAT JSON file, then a `Default` animation track is created.
+
+
 The JSON importer outputs information on the console:
 
 <img width="1467" height="750" alt="output" src="https://github.com/user-attachments/assets/2a4bea60-f4e0-40d7-ab89-7c73de0d0037" />
@@ -172,6 +183,10 @@ To get the animation track index from the provided `OpenVATAnimationTrack` objec
 To get the currently playing animation track index from the instance, use:
 
 `get_track_number_from_instance(instance_id: int) -> int`
+
+To get the animation track index by animation track name:
+
+`get_track_number_from_name(name: String) -> int:`
 
 To get the animation track index from the start and end frames, use:
 

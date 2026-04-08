@@ -83,7 +83,7 @@ func setupInstances():
 			#var tn_anim: int = vat_multi_mesh_instance_3d.get_track_number_from_animation(track)
 			#var tn_se: int = vat_multi_mesh_instance_3d.get_track_number_from_start_end_frames(track.startFrame, track.endFrame)
 			#
-			## Print the test results/
+			## Print the test results
 			#print(track, " >>> Tests: ",
 				## is the assigned animation object correct                     Are all three track_number methods the same?
 				#track == vat_multi_mesh_instance_3d.animation_tracks[tn], " ", bool(tn == tn_anim and tn == tn_se))

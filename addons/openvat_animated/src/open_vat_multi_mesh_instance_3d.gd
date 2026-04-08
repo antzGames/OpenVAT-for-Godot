@@ -83,7 +83,7 @@ func _ready() -> void:
 		multimesh.instance_count = 0
 		multimesh.transform_format = MultiMesh.TRANSFORM_3D
 		multimesh.use_custom_data = true
-		#multimesh.use_colors = true
+		#multimesh.use_colors = true  # will need for instanced blending and/or isLooping+framerate
 		multimesh.instance_count = instance_count
 	else:
 		_create_multimesh()
@@ -160,7 +160,7 @@ func play_next_track_all_instances():
 
 # Get functions
 
-## get animation start/end frames from instance.
+## get [animationOpenVATAnimationTrack] from instance.
 ## instance must have been initialized. 
 ## Returns null if instance_id not found
 func get_animation_from_instance(instance_id: int) -> OpenVATAnimationTrack:
@@ -180,6 +180,15 @@ func get_track_number_from_animation(animation: OpenVATAnimationTrack) -> int:
 		if animation == animation_tracks[i]: return i
 	
 	return -1
+
+## get track_number from animation track name
+## Returns -1 if not found.
+func get_track_number_from_name(name: String) -> int:
+	for i in range(animation_tracks.size()):
+		if animation_tracks[i].name.to_lower() == name.to_lower():
+			return i
+	
+	return -1
 	
 ## get track_number from start/end frames.[br]
 ## However [get_track_number_from_animation] is a better option.
@@ -190,7 +199,7 @@ func get_track_number_from_start_end_frames(start: int, end: int) -> int:
 	
 	return -1
 
-## get track_number from instance_id
+## get current track_number from instance_id
 ## Returns -1 if not found.
 func get_track_number_from_instance(instance_id: int) -> int:
 	return get_track_number_from_animation(get_animation_from_instance(instance_id))
