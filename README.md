@@ -272,3 +272,5 @@ does not affect the licensing of the core OpenVAT tool, which is licensed under 
 [Animated Jello](https://sketchfab.com/3d-models/animated-jello-c7ba6da061a1483bb1c81ecc3a59a564) by Logan S. - [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 [Shape Key Bone Driver Test](https://sketchfab.com/3d-models/shape-key-bone-driver-test-ed93191ec2fa4f7494cf4a689470a4ac) by Tsawodi - [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
+[Dentable/Crushable Soda Cans](https://sketchfab.com/3d-models/dentablecrushable-soda-cans-hp-e43d8593603f49dd8f4c8628c1cf5857) by 00004707 - [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
