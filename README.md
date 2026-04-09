@@ -225,7 +225,7 @@ Pressing the `F3` key will display more FPS information.
 ## Using the OpenVAT Godot shader on its own
 
 I have provied the official OpenVAT Godot shader for you to use on your own custom solutions.  Remember that the 
-official OpenVAT Godot shader does not have support for animations.  
+official OpenVAT Godot shader does not have support for multiple animations.  It will only loop through all encoded frames.
 
 The unaltered OpenVAT Godot shader is in: `res://addons/openvat_animated/shaders/openvat_singleton_shader.gdshader`
 See the MIT license for this shader below.
