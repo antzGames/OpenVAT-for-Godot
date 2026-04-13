@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b68uhu023oih"]
 
-[ext_resource type="Script" uid="uid://je6oo5gsoy33" path="res://demo/scenes/open_vat_singleton_demo.gd" id="1_84r0i"]
+[ext_resource type="Script" uid="uid://je6oo5gsoy33" path="res://demo/scenes/src/open_vat_singleton_demo.gd" id="1_84r0i"]
 [ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="2_04gnp"]
 [ext_resource type="PackedScene" uid="uid://cm5cqd4dopvkb" path="res://demo/scenes/skeletons_alpha_test.tscn" id="2_fbvvv"]
 [ext_resource type="ArrayMesh" uid="uid://c2ijduj11ssj" path="res://demo/assets/jello/jello_mesh.res" id="3_84r0i"]

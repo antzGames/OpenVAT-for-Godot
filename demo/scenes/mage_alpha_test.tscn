@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3x6w01reic4l"]
 
-[ext_resource type="Script" uid="uid://b27tc0i4ry488" path="res://demo/scenes/skeletons_alpha_test.gd" id="1_5t88m"]
+[ext_resource type="Script" uid="uid://b27tc0i4ry488" path="res://demo/scenes/src/alpha_test_demo.gd" id="1_5t88m"]
 [ext_resource type="PackedScene" uid="uid://bypvmrpum6glw" path="res://demo/scenes/skeletons_track_change.tscn" id="2_5t88m"]
 [ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="3_fb0fd"]
 [ext_resource type="Texture2D" uid="uid://chovdonrf753h" path="res://antz_512.png" id="4_c7ufu"]

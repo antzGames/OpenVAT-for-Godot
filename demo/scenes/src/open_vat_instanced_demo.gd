@@ -1,4 +1,4 @@
-class_name OpenVATInstanceDemo
+class_name OpenVATInstancedDemo
 extends Node3D
 
 @onready var directional_light_3d: DirectionalLight3D = $DirectionalLight3D

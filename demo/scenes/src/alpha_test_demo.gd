@@ -1,4 +1,4 @@
-extends OpenVATInstanceDemo
+extends OpenVATInstancedDemo
 
 var isFadeOut: bool = true
 var x: float = -30
