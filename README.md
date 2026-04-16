@@ -24,7 +24,7 @@ https://github.com/user-attachments/assets/d9d33d3f-720a-48d8-9bb5-6a15169e03d9
 
 - Ability to set a unique animation track per instance.
 - Ability to change animation track at any time per instance.
-- Ability to control the alpha channel for individual instances.
+- Ability to control the alpha channel for individual instances.  Also includes easy fade in/out tweened functions.
 - All the `MultiMeshInstance3D` features such as a unique transform (scale, rotation, and position) per instance.
 - Works on all renderers, and on HTML builds.
 
