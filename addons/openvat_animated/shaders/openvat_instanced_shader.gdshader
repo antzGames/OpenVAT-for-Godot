@@ -1,7 +1,6 @@
 shader_type spatial;
 render_mode blend_mix,depth_draw_always,depth_prepass_alpha,cull_disabled;
 
-
 // This shader assumes you exported a model in Blender using OpenVAT using these settings:
 // "Vertex Normals" = "Packed"
 // "Use Single Row" checked
@@ -10,10 +9,10 @@ render_mode blend_mix,depth_draw_always,depth_prepass_alpha,cull_disabled;
 
 
 /*
-Multi animation track VAT Shader - Antz
+Multi animation track OpenVAT Shader - Antz
 
 INSTANCE_CUSTOM is used to display a unique animation per instance.
-It has total of 4 floats. All renderers supported
+It has total of 4 floats. All renderers supported.
 
 	Red channel:
 		animation offset: used to randomize instances playing the same animation track
@@ -103,6 +102,9 @@ void vertex() {
 	float frame_offset = num_frames * custom_data.r;
 
 	ivec2 resolution = textureSize(vertex_animation_texture, 0);
+
+	// if start_frame and end_frame are the same - prevents divide by zero
+	if (abs(num_frames) < 0.0001) num_frames = 0.0001;
 
 	float time_scale_normalized = speed / num_frames;
 	frame_time = mod(TIME * time_scale_normalized, 1.0);

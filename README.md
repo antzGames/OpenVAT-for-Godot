@@ -126,7 +126,7 @@ If you want to change the animation track for a specific instance, use:
 
 `update_instance_track(instance_id: int, track_number: int)`
 
-If you want to change the alpha so can fade a specific instance out (or fade in), use:
+If you want to change the alpha of a specific instance use:
 
 `update_instance_alpha(instance_id: int, alpha: float)`
 
@@ -142,6 +142,16 @@ You can also change all parameters of a specific instance by using:
 You can also change ALL instances by using:
 
 `update_all_instances(animation_offset: float, track_number: int, alpha: float)`
+
+### `OpenVATMultiMeshInstance3D` Tweened Fade In/Out Functions
+
+You can get Godot to automatically fade out an instance using a `Tween` with:
+
+`fade_out_instance(instance_id: int, fade_out_time: float = 1.0, start_delay: float = 0.0):`
+
+You can get Godot to automatically fade in an instance using a `Tween` with:
+
+`fade_in_instance(instance_id: int, fade_in_time: float = 1.0, start_delay: float = 0.0):`
 
 ### `OpenVATMultiMeshInstance3D` Animation Play Functions
 
@@ -212,7 +222,7 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 ❓**Question**: How do I implement a static pose in an animation track:
  
   - 💡**Answer 1**: Create a 3 frame action on your NLA strip in Blender with each keyframe being the same, then do an OpenVAT export, and re-import into Godot.  The shader will loop these 3 frames, and look like the model is static because the vertext positions have not moved. 
-  - 💡**Answer 2**: Manually encode another animation track with the same startFrame and endFrame, then do an OpenVAT export, and re-import into Godot. (TODO: test this)
+  - 💡**Answer 2**: Manually encode another animation track with the same startFrame and endFrame, then do an OpenVAT export, and re-import into Godot.
 
 ## Demo
 
@@ -233,7 +243,7 @@ See the MIT license for this shader below.
 The most up to date version can be downloaded from the OpenVAT GitHub at: https://github.com/sharpen3d/openvat/blob/main/OpenVAT-Engine_Tools/GLSL/VertexAnimationPBR-GLSL.gdshader
 
 You will have to set the min/max values, and all other shader parameters manually. 
-Some of the demo scenes (`cloth.tscn`, `jello.tscn`) use this, so look at the code to see how it is done.
+Some of the demo scenes (`durty_rag.tscn`, `cloth.tscn`, `jello.tscn`) use the default OpenVAT shader, so take a look at the code to see how it is done.
 
 ## OpenVAT MIT License for shader in `OpenVAT-Engine_Tools`
 
@@ -263,7 +273,7 @@ does not affect the licensing of the core OpenVAT tool, which is licensed under 
 
 ## Asset Attributions
 
-[Skeleton](https://kaylousberg.itch.io/kaykit-skeletons) by Kay Lousberg - [CC0 License](http://creativecommons.org/publicdomain/zero/1.0/)
+[Skeleton](https://kaylousberg.itch.io/kaykit-skeletons) and [Mage](https://kaylousberg.itch.io/kaykit-adventurers) by Kay Lousberg - [CC0 License](http://creativecommons.org/publicdomain/zero/1.0/)
 
 [Floor Tile](https://kenney.nl/assets/prototype-textures) by Kenney - [CC0 License](http://creativecommons.org/publicdomain/zero/1.0/)
 

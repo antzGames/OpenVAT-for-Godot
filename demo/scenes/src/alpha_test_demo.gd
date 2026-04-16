@@ -1,6 +1,7 @@
 extends OpenVATInstancedDemo
 
 var isFadeOut: bool = true
+var ind: int = 0
 var x: float = -30
 var z: float = 0
 
@@ -9,26 +10,19 @@ func _process(delta: float) -> void:
 	
 	timer += delta
 	
-	if isFadeOut: # fade out
-		for instance in vat_multi_mesh_instance_3d.multimesh.instance_count:
-			if timer > instance: # start fading one instance every second
-				if (1 - (timer-instance)) > 0.0: # fade out
-					vat_multi_mesh_instance_3d.update_instance_alpha(instance, (1 - (timer-instance)))
-				else: # already faded out
-					vat_multi_mesh_instance_3d.update_instance_alpha(instance, 0.0)
-	else: # fade In
-		for instance in vat_multi_mesh_instance_3d.multimesh.instance_count:
-			if timer > instance: # start fading in instance every second
-				if (1 - (timer-instance)) <= 1.0: # fade in
-					vat_multi_mesh_instance_3d.update_instance_alpha(instance, (timer-instance))
-				else: # already faded in
-					vat_multi_mesh_instance_3d.update_instance_alpha(instance, 1.0)
-	
-	# reset after all have faded out
-	if timer > vat_multi_mesh_instance_3d.multimesh.instance_count + 1:
-		x = -30
-		z = 0
+	if timer > 1:
 		timer = 0
+		
+		if isFadeOut: # fade out
+			vat_multi_mesh_instance_3d.fade_out_instance(ind)
+		else:
+			vat_multi_mesh_instance_3d.fade_in_instance(ind)
+		
+		ind += 1
+		
+	# reset after all have faded out
+	if ind >= vat_multi_mesh_instance_3d.instance_count:
+		ind = 0
 		isFadeOut = !isFadeOut
 
 func setupInstances():
@@ -43,10 +37,9 @@ func setupInstances():
 		# randomize scale, rotation, and location
 		randomizeInstance(instance)
 		
-		# this cycles threw each animation track number
+		# this cycles through each animation track number
 		a += 1
-		if a > vat_multi_mesh_instance_3d.animation_tracks.size() - 1:
-			a = 0
+		if a > vat_multi_mesh_instance_3d.animation_tracks.size() - 1: a = 0
 			
 func randomizeInstance(i: int):
 	if randomize_scale:

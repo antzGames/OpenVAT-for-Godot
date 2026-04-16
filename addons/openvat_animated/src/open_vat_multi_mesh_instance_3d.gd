@@ -97,7 +97,7 @@ func _process(delta: float) -> void:
 	pass
 #endregion
 
-#region Set/Update functions
+#region instanced helper functions
 
 ## Updates the current instance_id with the provided animation_offset (0..1),
 ## unless rand_anim_offset = false, where it sets the animation_offset to 0
@@ -129,7 +129,7 @@ func update_instance_alpha(instance_id: int, alpha: float):
 
 ## Update the instance_id with the provided animation_offset, track_number, and alpha
 ## unless rand_anim_offset = false, where it sets the animation_offset to 0
-func update_instance(instance_id: int,animation_offset: float, track_number: int, alpha: float):
+func update_instance(instance_id: int, animation_offset: float, track_number: int, alpha: float):
 	update_instance_animation_offset(instance_id, animation_offset)
 	update_instance_track(instance_id, track_number)
 	update_instance_alpha(instance_id, alpha)
@@ -141,6 +141,51 @@ func update_all_instances(animation_offset: float, track_number: int, alpha: flo
 		update_instance_animation_offset(instance, animation_offset)
 		update_instance_track(instance, track_number)
 		update_instance_alpha(instance, alpha)
+
+# Tweened fades
+
+## Fade out a specific instance.[br][br]
+## [param instance_id] is the specific instance to fade.[br]
+## [param fade_out_time] the duration of the fade.[br]
+## [param start_delay] is the delay before fade starts.
+func fade_out_instance(instance_id: int, fade_out_time: float = 1.0, start_delay: float = 0.0):
+	if fade_out_time < 0: return
+	if instance_id >= multimesh.instance_count: return
+	
+	var custom_data: Color = multimesh.get_instance_custom_data(instance_id)
+	if custom_data.a < 0: return
+	
+	var fade_tween = create_tween()
+	fade_tween.tween_method(
+		_do_tween_fade.bind(instance_id),
+		multimesh.get_instance_custom_data(instance_id).a,
+		0,
+		fade_out_time).set_delay(start_delay)
+
+## Fade in a specific instance.[br][br]
+## [param instance_id] is the specific instance to fade in.[br]
+## [param fade_out_time] the duration of the fade.[br]
+## [param start_delay] is the delay before fade starts.
+func fade_in_instance(instance_id: int, fade_in_time: float = 1.0, start_delay: float = 0.0):
+	if fade_in_time < 0: return
+	if instance_id >= multimesh.instance_count: return
+
+	var custom_data: Color = multimesh.get_instance_custom_data(instance_id)
+	if custom_data.a >= 1: return
+	
+	var fade_tween = create_tween()
+	fade_tween.tween_method(
+		_do_tween_fade.bind(instance_id),
+		multimesh.get_instance_custom_data(instance_id).a,
+		1,
+		fade_in_time).set_delay(start_delay)
+
+func _do_tween_fade(value: float, instance_id: int):
+	var custom_data: Color = multimesh.get_instance_custom_data(instance_id)
+	custom_data.a = value
+	multimesh.set_instance_custom_data(instance_id, custom_data)
+	
+# Play next track
 
 ## Plays the next animation track for the provided instance_id
 func play_next_track_instance(instance_id: int):
