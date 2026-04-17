@@ -221,7 +221,7 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 
 ❓**Question**: How do I implement a static pose in an animation track:
  
-  - 💡**Answer 1**: Create a 3 frame action on your NLA strip in Blender with each keyframe being the same, then do an OpenVAT export, and re-import into Godot.  The shader will loop these 3 frames, and look like the model is static because the vertext positions have not moved. 
+  - 💡**Answer 1**: Create a 3 frame action on your NLA strip in Blender with each keyframe being the same, then do an OpenVAT export, and re-import into Godot.  The shader will loop these 3 frames, and look like the model is static because the vertex positions have not moved. 
   - 💡**Answer 2**: Manually encode another animation track with the same startFrame and endFrame, then do an OpenVAT export, and re-import into Godot.
 
 ## Demo
