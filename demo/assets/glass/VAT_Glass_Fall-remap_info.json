@@ -1,0 +1,30 @@
+{
+	"os-remap": {
+		"Min": [
+			-1.4,
+			-1.0,
+			-1.1
+		],
+		"Max": [
+			1.5,
+			1.5,
+			5.6
+		],
+		"Frames": 120
+	},
+	"animations": {
+			"Break": {
+			"startFrame": 26,
+			"endFrame": 120,
+			"framerate": 24,
+			"looping": true
+		},
+		"Fall": {
+			"startFrame": 1,
+			"endFrame": 120,
+			"framerate": 24,
+			"looping": true
+		}		
+
+	}
+}
