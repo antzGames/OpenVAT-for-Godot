@@ -11,13 +11,15 @@ instanced animation support, with auto OpenVAT configuration importing.
 
 ## Preview
 
-Watch a complete overview video on [YouTube](https://youtu.be/0Ok142yRlog).
-
-https://github.com/user-attachments/assets/a88725fc-1087-4392-ad31-f6830610975d
-
-https://github.com/user-attachments/assets/b5c860aa-b95c-4432-8966-adec5993b29f
+Watch a complete overview video on [YouTube](https://youtu.be/0Ok142yRlog).  I also have a [level destruction](https://youtu.be/-JMrnT9dD2g) video.
 
 https://github.com/user-attachments/assets/d9d33d3f-720a-48d8-9bb5-6a15169e03d9
+
+https://github.com/user-attachments/assets/fb9dad53-76d5-4f4e-af46-dca9bcefb7b8
+
+https://github.com/user-attachments/assets/8ba5e0e3-4a2f-47b1-bad2-e6921637a731
+
+https://github.com/user-attachments/assets/b5c860aa-b95c-4432-8966-adec5993b29f
 
 ## OpenVAT Support
 
