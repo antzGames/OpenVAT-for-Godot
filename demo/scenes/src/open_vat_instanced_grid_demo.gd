@@ -15,12 +15,7 @@ extends Node3D
 
 @export var title: String
 @export var next_scene: PackedScene
-
-@export_category("Instance Animation")
-@export var cycle_animations: bool = false
-@export var cycle_all_instances: bool = true
-@export_range(0.01, 5, 0.01) var cycle_time: float = 3
-var anim_timer: float
+@export_enum("Explosion", "Wave", "Random") var demo_type: String = "Explosion"
 
 @export_category("Camera")
 @export var rotate_camera: bool
@@ -33,9 +28,9 @@ var anim_timer: float
 
 var node3D: Node3D = Node3D.new()
 var location: Vector3 = Vector3.ZERO
-var timer: float
 var counter: int
 var square_rt: int
+var count: int = 0 # animation track number
 
 func _ready() -> void:
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if v_sync_check_button.button_pressed else DisplayServer.VSYNC_DISABLED)
@@ -43,65 +38,49 @@ func _ready() -> void:
 	title_label.text = title
 	camera_3d.global_position = camera_position
 	camera_3d.look_at(camera_lookat)
-	
-	# setup all instances
-	setupInstances()
-		
-func setupInstances():
-	# change floor size based on instance count
-	square_rt = int(sqrt(vat_multi_mesh_instance_3d.multimesh.instance_count))
-	mesh_floor.mesh.size = Vector2(float(square_rt) * grid_size.x, float(square_rt) * grid_size.y) 
-	
-	var count: int = 0 # animation track number
-	for instance in vat_multi_mesh_instance_3d.multimesh.instance_count:
-		# randomize the animation offset
-		vat_multi_mesh_instance_3d.update_instance_animation_offset(instance, randf())
-		# set the animation track number
-		vat_multi_mesh_instance_3d.update_instance_track(instance, count)
-		# set alpha to 1.0 -> you can fade out a specific instance by setting alpha to 0
-		vat_multi_mesh_instance_3d.update_instance_alpha(instance, 1.0)
-		
-		# OR you can just use one call:
-		#vat_multi_mesh_instance_3d.update_instance(instance, randf(), count, 1.0)
-		
-		# randomize scale, rotation, and location
-		placeInstance(instance)
-				
-		# this cycles through each animation track number
-		count += 1
-		if count > vat_multi_mesh_instance_3d.animation_tracks.size() - 1:
-			count = 0
-
-		
-func placeInstance(i: int):
-	var x: float = (-square_rt * grid_size.x)/2.0 + (i % square_rt * grid_size.y)
-	var y: float = (-square_rt * grid_size.x)/2.0 + (int(i / 10.0)  * grid_size.y)
-	
-	location.x = x
-	location.z = y
-	location.y = 0
-	
-	# entire row effect
-	#vat_multi_mesh_instance_3d.update_instance_animation_offset(i, (i % square_rt) /10.0) 
-	
-	node3D.position = location
-	vat_multi_mesh_instance_3d.multimesh.set_instance_transform(i, node3D.transform)
+	_on_demo_type_select_item_selected(0) # 0 = Explosion
 
 func _process(delta: float) -> void:
 	if rotate_camera:
 		pivot.rotate_y(delta * 0.1 * camera_speed)
+
+func setupInstances():
+	# change floor size based on instance count
+	square_rt = int(sqrt(vat_multi_mesh_instance_3d.multimesh.instance_count))
+	mesh_floor.mesh.size = Vector2(float(square_rt) * grid_size.x, float(square_rt) * grid_size.y) 
+
+	for instance in vat_multi_mesh_instance_3d.multimesh.instance_count:
+		placeInstance(instance)
+
+func placeInstance(i: int):
+	vat_multi_mesh_instance_3d.update_instance_alpha(i, 1.0)
 	
-	if cycle_animations:
-		anim_timer += delta
-		counter += 1
-		if counter > vat_multi_mesh_instance_3d.instance_count -1: counter = 0
-		
-		if cycle_all_instances and anim_timer > cycle_time: 
-			anim_timer = 0
-			vat_multi_mesh_instance_3d.play_next_track_all_instances()
-		elif anim_timer > cycle_time: 
-			anim_timer = 0
-			vat_multi_mesh_instance_3d.play_next_track_instance(counter)
+	var x: float = (-square_rt * grid_size.x)/2.0 + (i % square_rt * grid_size.y)
+	@warning_ignore("integer_division")
+	var y: float = (-square_rt * grid_size.x)/2.0 + (int(i / square_rt) * grid_size.y)
+	
+	location.x = x
+	location.z = y
+	location.y = randf_range(0.1,0.2) # prevent z-fighting between tiles
+	
+	# different demo behaviors
+	if demo_type.to_lower() == "explosion":
+		vat_multi_mesh_instance_3d.update_instance_track(i, 0)
+		vat_multi_mesh_instance_3d.update_instance_animation_offset(i, cos(location.distance_to(Vector3.ZERO)/(square_rt * grid_size.y))) 
+	elif demo_type.to_lower() == "wave":
+		vat_multi_mesh_instance_3d.update_instance_track(i, 0)
+		vat_multi_mesh_instance_3d.update_instance_animation_offset(i, float((i % square_rt)) * 0.5 / float(square_rt)) 
+	elif demo_type.to_lower() == "random":
+		vat_multi_mesh_instance_3d.update_instance_track(i, count)
+		vat_multi_mesh_instance_3d.update_instance_animation_offset(i, randf())
+		count += 1
+		if count > vat_multi_mesh_instance_3d.animation_tracks.size() - 1:
+			count = 0
+	
+	node3D.rotation.y = randi_range(0,3) * (PI/2)
+	node3D.position = location
+	
+	vat_multi_mesh_instance_3d.multimesh.set_instance_transform(i, node3D.transform)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("next_scene"):
@@ -113,3 +92,10 @@ func _on_shadows_check_button_toggled(toggled_on: bool) -> void:
 
 func _on_v_sync_check_button_toggled(toggled_on: bool) -> void:
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if toggled_on else DisplayServer.VSYNC_DISABLED)
+
+func _on_demo_type_select_item_selected(index: int) -> void:
+	match index:
+		0: demo_type = "Explosion"
+		1: demo_type = "Wave"
+		2: demo_type = "Random"
+	setupInstances()

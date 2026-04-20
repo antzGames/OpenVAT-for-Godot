@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dna8o64lukad2"
-path="res://.godot/imported/glass.glb-ebf2c1d70e6fb5f6c522a0be87d3b4c3.scn"
+uid="uid://dsbtef7ftmgi4"
+path="res://.godot/imported/floor.glb-4a084d6bf164f26328ac18085efcb946.scn"
 
 [deps]
 
-source_file="res://demo/assets/glass/glass.glb"
-dest_files=["res://.godot/imported/glass.glb-ebf2c1d70e6fb5f6c522a0be87d3b4c3.scn"]
+source_file="res://demo/assets/glass/floor.glb"
+dest_files=["res://.godot/imported/floor.glb-4a084d6bf164f26328ac18085efcb946.scn"]
 
 [params]
 
@@ -39,14 +39,14 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "meshes": {
-"glass_VAT_Glass_Fall_mesh_001": {
+"floor_VAT_Glass_Fall_mesh_001": {
 "generate/lightmap_uv": 0,
-"generate/lods": 2,
+"generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://demo/assets/glass/glass_mesh.res",
-"save_to_file/path": "uid://drufwe5ju3dqi"
+"save_to_file/fallback_path": "res://demo/assets/glass/floor_mesh.res",
+"save_to_file/path": "uid://c86m3412k40mh"
 }
 }
 }
