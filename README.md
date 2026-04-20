@@ -9,6 +9,8 @@ vertex offsets on GPU via low-cost vertex shaders. OpenVAT GitHub: https://githu
 In addition, a new, easy to use `OpenVATMultiMeshInstance3D` node is provided for 
 instanced animation support, with auto OpenVAT configuration importing.
 
+You can play with the demo in your browser at: [https://antzgames.itch.io/openvat-for-godot](https://antzgames.itch.io/openvat-for-godot)
+
 ## Preview
 
 Watch a complete overview video on [YouTube](https://youtu.be/0Ok142yRlog).  I also have a [level destruction](https://youtu.be/-JMrnT9dD2g) video.
