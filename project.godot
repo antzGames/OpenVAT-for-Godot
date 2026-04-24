@@ -38,7 +38,7 @@ movie_writer/movie_file="D:/Videos/Godot_Capture/openvat.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/openvat_animated/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/easy_web_loader/plugin.cfg", "res://addons/openvat_animated/plugin.cfg")
 
 [file_customization]
 

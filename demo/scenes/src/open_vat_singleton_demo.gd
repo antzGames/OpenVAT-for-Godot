@@ -24,9 +24,11 @@ var location: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if v_sync_check_button.button_pressed else DisplayServer.VSYNC_DISABLED)
+	if OS.get_name() == "Web": v_sync_check_button.disabled = true
 	camera_3d.global_position = camera_position
 	camera_3d.look_at(camera_lookat)
 	title_label.text = title
+	if OS.get_name() == "Web": $UI/Info.text = "Press [SPACE] or [F1] to restart demos."
 
 func _process(delta: float) -> void:
 	if rotate_camera:
@@ -36,7 +38,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("next_scene"):
 		if next_scene: get_tree().change_scene_to_packed(next_scene)
 		else:
-			if OS.get_name() != "Web": get_tree().quit()
+			if OS.get_name() != "Web":
+				get_tree().quit()
+			else:
+				get_tree().change_scene_to_file("res://demo/scenes/soda_can.tscn")
 
 func _on_shadows_check_button_toggled(toggled_on: bool) -> void:
 	shadows_check_button.text = str(toggled_on).capitalize()

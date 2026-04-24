@@ -26,7 +26,7 @@ size = Vector2(200, 200)
 
 [node name="JelloDemo" type="Node3D" unique_id=391254406]
 script = ExtResource("1_84r0i")
-title = "Jello Demo - Single Instance"
+title = "Jello Demo - Interpolation Test"
 next_scene = ExtResource("2_fbvvv")
 rotate_camera = true
 camera_position = Vector3(0, 5, 15)
