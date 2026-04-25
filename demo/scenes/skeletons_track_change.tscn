@@ -30,7 +30,7 @@ transform_format = 1
 use_custom_data = true
 instance_count = 1
 mesh = ExtResource("4_jtq16")
-buffer = PackedFloat32Array(8.91844, 34.31081, 1, 1, 1, 0.225, 0.39184397, 0.002401491, 8.609423, 33.359753, 1, 1, -21.703125, 1.6796875, -0.023880005, 0.81591797)
+buffer = PackedFloat32Array(81.5, 614, 1, 1, 1, 0.04, 0.0023400935, 0.15555556, 81.76919, 612.3004, 1, 1, 1, 0.04, 0.0027600436, 0.117787)
 
 [node name="SkeletonTrackChange" type="Node3D" unique_id=391254406]
 script = ExtResource("1_jssnb")
@@ -58,10 +58,8 @@ environment = SubResource("Environment_4gt3n")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=140219212]
 transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.707107, -0.353553, 0.612372, 0, 0, 0)
 shadow_enabled = true
-directional_shadow_mode = 0
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1794494979]
-visible = false
 mesh = SubResource("PlaneMesh_m56k3")
 
 [node name="OpenVATMultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=1402752591]
@@ -134,6 +132,7 @@ theme_override_font_sizes/font_size = 24
 text = "2000"
 
 [node name="HBoxShadows" type="HBoxContainer" parent="UI/MarginContainer/VBox" unique_id=1729384961]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 
