@@ -15,13 +15,7 @@ You can play with the demo in your browser at: [https://antzgames.itch.io/openva
 
 Watch a complete overview video on [YouTube](https://youtu.be/0Ok142yRlog).  I also have a [level destruction](https://youtu.be/-JMrnT9dD2g) video.
 
-https://github.com/user-attachments/assets/d9d33d3f-720a-48d8-9bb5-6a15169e03d9
-
-https://github.com/user-attachments/assets/fb9dad53-76d5-4f4e-af46-dca9bcefb7b8
-
-https://github.com/user-attachments/assets/8ba5e0e3-4a2f-47b1-bad2-e6921637a731
-
-https://github.com/user-attachments/assets/b5c860aa-b95c-4432-8966-adec5993b29f
+https://github.com/user-attachments/assets/8ab836ec-a085-454a-b0d3-394aaa6a44b2
 
 ## OpenVAT Support
 
