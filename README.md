@@ -46,7 +46,7 @@ https://github.com/user-attachments/assets/8ab836ec-a085-454a-b0d3-394aaa6a44b2
 | Version | Status | Features |
 |---|---|---|
 | V0.0.1 | ✅Released | OpenVAT JSON file import.  New `OpenVATMultimeshInstance3D` node. Basic instanced animation track control. Instanced alpha channel control. Roughness, Metallic, Normal Map texture support in shader. |
-| V0.0.2 | ✅Released | Instanced `isLooping` and `framerate` support using the `INSTANCE_COLOR.rg` fields. |
+| V0.0.2 | ✅Released | Instanced `isLooping` and `timestamp` support using the `INSTANCE_COLOR.rg` fields. |
 | V0.0.3 | 💀Cancelled | Animation blending support needs at a minimum `3` more instanced uniforms which Godot does not provide. Need to wait for https://github.com/godotengine/godot-proposals/issues/8666 |
 
 ## Requirements

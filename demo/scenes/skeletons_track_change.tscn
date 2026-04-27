@@ -69,8 +69,8 @@ script = ExtResource("5_qlisr")
 exported_mesh = ExtResource("4_jtq16")
 instance_count = 1
 openvat_json_config_file = "res://demo/assets/skeleton/Collection-remap_info.json"
-min_values = Vector3(-1.8, -2.9, -0.4)
-max_values = Vector3(1.6, 0.4, 2.1)
+min_values = Vector3(-2.3, -2.1, -0.9)
+max_values = Vector3(2.3, 3, 1.4)
 metadata/_custom_type_script = "uid://sp8krhj7tq5i"
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=10977124]
@@ -132,25 +132,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "2000"
 
-[node name="HBoxShadows" type="HBoxContainer" parent="UI/MarginContainer/VBox" unique_id=1729384961]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="LabelShadows" type="Label" parent="UI/MarginContainer/VBox/HBoxShadows" unique_id=893450082]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "Shadows:"
-horizontal_alignment = 2
-
-[node name="ShadowsCheckButton" type="CheckButton" parent="UI/MarginContainer/VBox/HBoxShadows" unique_id=1722329091]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-button_pressed = true
-text = "True"
-
 [node name="HBoxTrack" type="HBoxContainer" parent="UI/MarginContainer/VBox" unique_id=1651376296]
 layout_mode = 2
 theme_override_constants/separation = 10
@@ -167,6 +148,24 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 button_pressed = true
+
+[node name="HBoxShadows" type="HBoxContainer" parent="UI/MarginContainer/VBox" unique_id=1729384961]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LabelShadows" type="Label" parent="UI/MarginContainer/VBox/HBoxShadows" unique_id=893450082]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Shadows:"
+horizontal_alignment = 2
+
+[node name="ShadowsCheckButton" type="CheckButton" parent="UI/MarginContainer/VBox/HBoxShadows" unique_id=1722329091]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "True"
 
 [node name="HBoxShadows2" type="HBoxContainer" parent="UI/MarginContainer/VBox" unique_id=1604977151]
 layout_mode = 2
@@ -202,6 +201,6 @@ grow_vertical = 0
 texture = ExtResource("6_dk2x0")
 expand_mode = 1
 
-[connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows/ShadowsCheckButton" to="." method="_on_shadows_check_button_toggled"]
 [connection signal="item_selected" from="UI/MarginContainer/VBox/HBoxTrack/TrackSelect" to="." method="_on_track_select_item_selected"]
+[connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows/ShadowsCheckButton" to="." method="_on_shadows_check_button_toggled"]
 [connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows2/VSyncCheckButton" to="." method="_on_v_sync_check_button_toggled"]
