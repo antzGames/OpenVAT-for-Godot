@@ -89,7 +89,7 @@ However, the Godot version of the OpenVAT shader assumes you exported your model
 3. Make sure the `.exr` file is re-imported with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
 4. Open the `.glb` model, go to the Meshes tab, select the mesh, then on the right select `Save to File` option. Re-import.
 5. Open your newly saved `Mesh` resource.  In `Surface 0`, change the `Material` to a `ShaderMaterial` and assign the 
-OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanced_shader.gdshader`
+OpenVAT instanced shader: `res://addons/openvat_animated/shaders/openvat_instanced.gdshader`
 6. Drag the `.exr` OpenVAT file into the `Vertex Animation Texture` shader parameter.
 7. Set the `Speed` shader parameter to the FPS of the animation that was in Blender (defaults to 30).
 8. (Optional) Drag or configure any albedo, metallic, roghness, normal map textures into the provided shader paramters.
@@ -241,7 +241,7 @@ Pressing the `F3` key will display more FPS information.
 I have provied the official OpenVAT Godot shader for you to use on your own custom solutions.  Remember that the 
 official OpenVAT Godot shader does not have support for multiple animations.  It will only loop through all encoded frames.
 
-The unaltered OpenVAT Godot shader is in: `res://addons/openvat_animated/shaders/openvat_singleton_shader.gdshader`
+The unaltered OpenVAT Godot shader is in: `res://addons/openvat_animated/shaders/openvat_singleton.gdshader`
 See the MIT license for this shader below.
 
 The most up to date version can be downloaded from the OpenVAT GitHub at: https://github.com/sharpen3d/openvat/blob/main/OpenVAT-Engine_Tools/GLSL/VertexAnimationPBR-GLSL.gdshader

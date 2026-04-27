@@ -12,5 +12,12 @@
         ],
         "Frames": 121
     },
-    "animations": {}
+    "animations": {
+        "Crush": {
+            "startFrame": 1,
+            "endFrame": 121,
+            "framerate": 30,
+            "looping": true
+        },		
+    }
 }

@@ -27,7 +27,7 @@ extends Node3D
 @export_category("Instance Animation")
 @export var cycle_animations: bool = false
 @export var cycle_all_instances: bool = true
-@export_range(0.01, 5, 0.01) var cycle_time: float = 3
+@export_range(0.01, 10, 0.01) var cycle_time: float = 3
 var anim_timer: float
 
 @export_category("Camera")

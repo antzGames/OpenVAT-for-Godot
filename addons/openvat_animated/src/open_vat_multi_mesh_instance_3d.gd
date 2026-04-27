@@ -3,6 +3,9 @@ class_name OpenVATMultiMeshInstance3D
 extends MultiMeshInstance3D
 ## Allows [MultiMeshInstance3D] vertex animation functionality that is OpenVAT compatible.
 
+
+var _rollover_value : float = ProjectSettings.get_setting("rendering/limits/time/time_rollover_secs")
+
 #region Variables and Exports
 ## Exported [Mesh] from OpenVAT, with [ShaderMaterial] set in surface_0
 @export var exported_mesh: ArrayMesh:
@@ -45,6 +48,7 @@ var animation_tracks: Array[OpenVATAnimationTrack] = []
 
 var frames: int
 var custom_data: Color
+var custom_color: Color
 #endregion
 
 #region Built in Functions
@@ -82,8 +86,8 @@ func _ready() -> void:
 	if multimesh:
 		multimesh.instance_count = 0
 		multimesh.transform_format = MultiMesh.TRANSFORM_3D
-		multimesh.use_custom_data = true
-		#multimesh.use_colors = true  # will need for instanced blending and/or isLooping+framerate
+		multimesh.use_custom_data = true # offsets, start/end frame, alpha
+		multimesh.use_colors = true  # isLooping, timestamp
 		multimesh.instance_count = instance_count
 	else:
 		_create_multimesh()
@@ -119,6 +123,8 @@ func update_instance_track(instance_id: int, track_number: int):
 	custom_data.g = animation_tracks[track_number].startFrame 
 	custom_data.b = animation_tracks[track_number].endFrame
 	multimesh.set_instance_custom_data(instance_id, custom_data)
+		
+	reset_one_shot(instance_id)
 
 ## Updates the current instance_id with the provided alpha (0..1)
 func update_instance_alpha(instance_id: int, alpha: float):
@@ -250,6 +256,24 @@ func get_track_number_from_instance(instance_id: int) -> int:
 	return get_track_number_from_animation(get_animation_from_instance(instance_id))
 	
 #endregion
+
+
+## Restarts the one shot animation for a specific instance_id.[br][br]
+## Only valid if instanced animation track  [is_looping] is true
+func reset_one_shot(instance_id: int):
+	custom_color = multimesh.get_instance_color(instance_id)
+	
+	if get_animation_from_instance(instance_id).isLooping:
+		custom_color.r = 1.0
+	else:
+		custom_color.r = 0.0
+		custom_color.g = get_current_timestamp()
+	
+	multimesh.set_instance_color(instance_id, custom_color)
+
+func get_current_timestamp() -> float:
+	return fmod((float(Time.get_ticks_msec()) / 1000.0), _rollover_value) - 0.5
+
 
 #region JSON config file import
 

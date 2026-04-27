@@ -27,10 +27,11 @@ size = Vector2(200, 200)
 
 [sub_resource type="MultiMesh" id="MultiMesh_wsgid"]
 transform_format = 1
+use_colors = true
 use_custom_data = true
 instance_count = 1
 mesh = ExtResource("4_jtq16")
-buffer = PackedFloat32Array(0.5, 5.9999995, 0.12236, 0.12236, 0.12236, 1, 0.00062866724, 0.022082018, 0.7691889, 4.3004065, 0.12236, 0.12236, 0.12236, 1, 0.00074148737, 0.016720526)
+buffer = PackedFloat32Array(0, 3.1e-44, 1e-45, 0, 3.2e-44, 3.1e-44, 1e-45, 3e-44, 3e-45, 1e-45, 3.1e-44, 3e-44, 3e-45, 2.8e-44, 4e-45, 3e-45, 3e-44, 2.8e-44, 4e-45, 2.7e-44)
 
 [node name="SkeletonTrackChange" type="Node3D" unique_id=391254406]
 script = ExtResource("1_jssnb")

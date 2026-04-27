@@ -9,7 +9,7 @@ render_mode blend_mix,depth_draw_always,depth_prepass_alpha,cull_disabled;
 
 
 /*
-Multi animation track OpenVAT Shader - Antz
+Multi animation track OpenVAT Shader - by Antz 2026
 
 INSTANCE_CUSTOM is used to display a unique animation per instance.
 It has total of 4 floats. All renderers supported.
@@ -25,6 +25,21 @@ It has total of 4 floats. All renderers supported.
 
 	Alpha channel:
 		alpha of mesh: used to fade in/out a unique instance
+		
+Instanced COLOR is used for looping / non-looping (also called one_shot) animations.
+It has total of 4 floats. All renderers supported.
+
+	Red channel:
+		is_looping: 1.0 = true, 0.0 = false
+
+	Green channel:
+		timestamp: used when is_looping is false. Tells the shader when the one_shot has been reset.
+
+	Blue channel:
+		not used
+
+	Alpha channel:
+		not used
 */
 
 group_uniforms OpenVAT;
@@ -69,6 +84,7 @@ uniform float normal_scale : hint_range(-16.0, 16.0) = 1.0;
 group_uniforms;
 
 varying flat vec4 custom_data;
+varying flat vec4 color_data;
 
 vec3 blenderToGodot(vec3 v) {
 	return vec3(v.x, v.z, -v.y);
@@ -91,11 +107,11 @@ vec3 rescaleNormal(vec3 normal) {
 
 void vertex() {
 	custom_data = INSTANCE_CUSTOM;
+	color_data = COLOR;
 	
-	float frame_time;
-	float current_frame;
-	
-	// Used so that each instance can play a different animation track
+	bool is_looping = color_data.r > 0.5; // 1.0 = true, 0.0 = false
+	float timestamp = color_data.g;
+
 	float start_frame = custom_data.g;
 	float end_frame = custom_data.b;
 	float num_frames = end_frame - start_frame;
@@ -106,12 +122,30 @@ void vertex() {
 	// if start_frame and end_frame are the same - prevents divide by zero
 	if (abs(num_frames) < 0.0001) num_frames = 0.0001;
 
-	float time_scale_normalized = speed / num_frames;
-	frame_time = mod(TIME * time_scale_normalized, 1.0);
-	current_frame = start_frame + mod((frame_time * num_frames) + frame_offset, num_frames);
-
-	float next_frame = current_frame + 1.0;
-	if (next_frame > end_frame) next_frame = start_frame;
+	float time_scale_normalized;
+	float frame_time;
+	float current_frame;
+	float next_frame;
+	
+	if (is_looping) {
+		time_scale_normalized = TIME * (speed / num_frames);
+		frame_time = mod(time_scale_normalized, 1.0);
+		current_frame = start_frame + mod((frame_time * num_frames) + frame_offset, num_frames);
+		next_frame = current_frame + 1.0;
+		if (next_frame > end_frame) next_frame = start_frame;
+	} else {
+		time_scale_normalized = (TIME - timestamp) * (speed / num_frames);
+		frame_time = time_scale_normalized;
+		current_frame = start_frame + (frame_time * num_frames) ;
+		next_frame = current_frame + 1.0;
+		if (next_frame >= end_frame){
+			current_frame = end_frame;
+			next_frame = end_frame;
+		} else {
+			next_frame = current_frame + 1.0;
+			if (next_frame > end_frame) next_frame = start_frame;
+		}
+	}
 
 	float blend = fract(frame_time);
 
