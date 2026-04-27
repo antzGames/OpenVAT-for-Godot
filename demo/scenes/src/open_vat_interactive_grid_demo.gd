@@ -60,7 +60,7 @@ func placeInstance(i: int):
 	
 	location.x = x
 	location.z = y
-	location.y = 0.1
+	location.y = randf_range(0.1,0.2)
 
 	vat_multi_mesh_instance_3d.update_instance_track(i, 2)
 

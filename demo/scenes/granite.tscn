@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dhx2buk8thdx8"]
 
 [ext_resource type="Script" uid="uid://je6oo5gsoy33" path="res://demo/scenes/src/open_vat_singleton_demo.gd" id="1_aug1l"]
-[ext_resource type="PackedScene" uid="uid://caao8i34yqxpw" path="res://demo/scenes/exploding_floor_interactive.tscn" id="2_aug1l"]
+[ext_resource type="PackedScene" uid="uid://b68uhu023oih" path="res://demo/scenes/jello.tscn" id="2_aug1l"]
 [ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="3_gx0w3"]
 [ext_resource type="ArrayMesh" uid="uid://c755x0f0d5vw1" path="res://demo/assets/glass/granite_mesh.res" id="4_aug1l"]
 [ext_resource type="Texture2D" uid="uid://chovdonrf753h" path="res://antz_512.png" id="5_0m0ox"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bypvmrpum6glw"]
 
 [ext_resource type="Script" uid="uid://bwf8bcqwdntcm" path="res://demo/scenes/src/open_vat_instanced_track.gd" id="1_jssnb"]
-[ext_resource type="PackedScene" uid="uid://cfhiyduvrs0o8" path="res://demo/scenes/shapekeybones.tscn" id="2_6j8jq"]
+[ext_resource type="PackedScene" uid="uid://238quc0uqb5u" path="res://demo/scenes/skeletons.tscn" id="2_qbsfy"]
 [ext_resource type="Texture2D" uid="uid://baoe11f1xmft0" path="res://demo/assets/images/texture_01.png" id="3_pme3f"]
 [ext_resource type="ArrayMesh" uid="uid://c5mb8ol0bdgdt" path="res://demo/assets/skeleton/open_vat_skel_meh.res" id="4_jtq16"]
 [ext_resource type="Script" uid="uid://sp8krhj7tq5i" path="res://addons/openvat_animated/src/open_vat_multi_mesh_instance_3d.gd" id="5_qlisr"]
@@ -36,7 +36,7 @@ buffer = PackedFloat32Array(0, 3.1e-44, 1e-45, 0, 3.2e-44, 3.1e-44, 1e-45, 3e-44
 [node name="SkeletonTrackChange" type="Node3D" unique_id=391254406]
 script = ExtResource("1_jssnb")
 title = "Animation Track Selection Test"
-next_scene = ExtResource("2_6j8jq")
+next_scene = ExtResource("2_qbsfy")
 base_scale = 2.0
 max_scale = 2.0
 cycle_all_instances = false
@@ -69,8 +69,8 @@ script = ExtResource("5_qlisr")
 exported_mesh = ExtResource("4_jtq16")
 instance_count = 1
 openvat_json_config_file = "res://demo/assets/skeleton/Collection-remap_info.json"
-min_values = Vector3(-2.3, -2.1, -0.9)
-max_values = Vector3(2.3, 3, 1.4)
+min_values = Vector3(-1.8, -2.9, -0.4)
+max_values = Vector3(1.6, 0.4, 2.1)
 metadata/_custom_type_script = "uid://sp8krhj7tq5i"
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=10977124]
