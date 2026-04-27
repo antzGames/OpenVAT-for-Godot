@@ -41,7 +41,7 @@ script = ExtResource("1_s4612")
 title = "Interactive One Shot  - Click Floor!"
 next_scene = ExtResource("2_rpebt")
 rotate_camera = true
-camera_position = Vector3(0, 25, 40)
+camera_position = Vector3(0, 30, 40)
 grid_size = Vector2(7.94, 7.94)
 
 [node name="Pivot" type="Node3D" parent="." unique_id=2130049990]
