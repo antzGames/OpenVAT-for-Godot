@@ -136,7 +136,7 @@ void vertex() {
 	} else {
 		time_scale_normalized = (TIME - timestamp) * (speed / num_frames);
 		frame_time = time_scale_normalized;
-		current_frame = start_frame + (frame_time * num_frames) ;
+		current_frame = start_frame + (frame_time * num_frames) + frame_offset;
 		next_frame = current_frame + 1.0;
 		if (next_frame >= end_frame){
 			current_frame = end_frame;

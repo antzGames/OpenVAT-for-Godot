@@ -27,9 +27,8 @@ extends Node3D
 
 var node3D: Node3D = Node3D.new()
 var location: Vector3 = Vector3.ZERO
-var counter: int
 var square_rt: int
-var count: int = 0 # animation track number
+var demo_index: int = 0;
 
 func _ready() -> void:
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if v_sync_check_button.button_pressed else DisplayServer.VSYNC_DISABLED)
@@ -61,18 +60,47 @@ func placeInstance(i: int):
 	
 	location.x = x
 	location.z = y
-	location.y = randf_range(0.1,0.2) # prevent z-fighting between tiles
-	
+	location.y = 0.1
+
 	vat_multi_mesh_instance_3d.update_instance_track(i, 0)
-	
+
 	node3D.rotation.y = randi_range(0,3) * (PI/2)
 	node3D.position = location
-	
 	vat_multi_mesh_instance_3d.multimesh.set_instance_transform(i, node3D.transform)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("next_scene"):
 		if next_scene: get_tree().change_scene_to_packed(next_scene)
+	elif event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			do_raycast()
+
+func do_raycast():
+	var space_state = get_world_3d().direct_space_state
+	var mousepos = get_viewport().get_mouse_position()
+
+	var origin = camera_3d.project_ray_origin(mousepos)
+	var end = origin + camera_3d.project_ray_normal(mousepos) * 400
+	var query = PhysicsRayQueryParameters3D.create(origin, end)
+	query.collide_with_areas = true
+
+	var result = space_state.intersect_ray(query)
+	if result and result.get("collider").name == "Area3D": 
+		for instance in vat_multi_mesh_instance_3d.multimesh.instance_count:
+			var x: float = (-square_rt * grid_size.x)/2.0 + (instance % square_rt * grid_size.y)
+			@warning_ignore("integer_division")
+			var y: float = (-square_rt * grid_size.x)/2.0 + (int(instance / square_rt) * grid_size.y)
+	
+			location.x = x
+			location.z = y
+			location.y = 0.1
+			
+			if demo_index == 0:
+				if location.distance_to(result["position"]) < grid_size.y * 3:
+					vat_multi_mesh_instance_3d.update_instance_track(instance, 0)
+			elif demo_index == 1:
+				if location.distance_to(result["position"]) < grid_size.y:
+					vat_multi_mesh_instance_3d.update_instance_track(instance, 1)
 
 func _on_shadows_check_button_toggled(toggled_on: bool) -> void:
 	shadows_check_button.text = str(toggled_on).capitalize()
@@ -80,3 +108,6 @@ func _on_shadows_check_button_toggled(toggled_on: bool) -> void:
 
 func _on_v_sync_check_button_toggled(toggled_on: bool) -> void:
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if toggled_on else DisplayServer.VSYNC_DISABLED)
+
+func _on_demo_type_select_item_selected(index: int) -> void:
+	demo_index = index

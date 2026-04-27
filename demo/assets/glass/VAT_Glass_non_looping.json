@@ -23,7 +23,7 @@
 			"startFrame": 1,
 			"endFrame": 120,
 			"framerate": 24,
-			"looping": true
+			"looping": false
 		}
 	}
 }
