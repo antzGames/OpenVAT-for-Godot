@@ -30,7 +30,7 @@ transform_format = 1
 use_custom_data = true
 instance_count = 1
 mesh = ExtResource("4_jtq16")
-buffer = PackedFloat32Array(81.5, 614, 1, 1, 1, 0.04, 0.0023400935, 0.15555556, 81.76919, 612.3004, 1, 1, 1, 0.04, 0.0027600436, 0.117787)
+buffer = PackedFloat32Array(0.5, 5.9999995, 0.12236, 0.12236, 0.12236, 1, 0.00062866724, 0.022082018, 0.7691889, 4.3004065, 0.12236, 0.12236, 0.12236, 1, 0.00074148737, 0.016720526)
 
 [node name="SkeletonTrackChange" type="Node3D" unique_id=391254406]
 script = ExtResource("1_jssnb")
@@ -150,6 +150,23 @@ theme_override_font_sizes/font_size = 24
 button_pressed = true
 text = "True"
 
+[node name="HBoxTrack" type="HBoxContainer" parent="UI/MarginContainer/VBox" unique_id=1651376296]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LabelTrack" type="Label" parent="UI/MarginContainer/VBox/HBoxTrack" unique_id=178673535]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Animation:"
+horizontal_alignment = 2
+
+[node name="TrackSelect" type="OptionButton" parent="UI/MarginContainer/VBox/HBoxTrack" unique_id=587310739]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+
 [node name="HBoxShadows2" type="HBoxContainer" parent="UI/MarginContainer/VBox" unique_id=1604977151]
 layout_mode = 2
 theme_override_constants/separation = 10
@@ -168,23 +185,6 @@ theme_override_font_sizes/font_size = 24
 button_pressed = true
 text = "True"
 
-[node name="HBoxTrack" type="HBoxContainer" parent="UI/MarginContainer/VBox" unique_id=1651376296]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="LabelTrack" type="Label" parent="UI/MarginContainer/VBox/HBoxTrack" unique_id=178673535]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "Animation:"
-horizontal_alignment = 2
-
-[node name="TrackSelect" type="OptionButton" parent="UI/MarginContainer/VBox/HBoxTrack" unique_id=587310739]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-button_pressed = true
-
 [node name="Label" type="TextureRect" parent="UI" unique_id=271355795]
 custom_minimum_size = Vector2(128, 128)
 anchors_preset = 3
@@ -202,5 +202,5 @@ texture = ExtResource("6_dk2x0")
 expand_mode = 1
 
 [connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows/ShadowsCheckButton" to="." method="_on_shadows_check_button_toggled"]
-[connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows2/VSyncCheckButton" to="." method="_on_v_sync_check_button_toggled"]
 [connection signal="item_selected" from="UI/MarginContainer/VBox/HBoxTrack/TrackSelect" to="." method="_on_track_select_item_selected"]
+[connection signal="toggled" from="UI/MarginContainer/VBox/HBoxShadows2/VSyncCheckButton" to="." method="_on_v_sync_check_button_toggled"]
