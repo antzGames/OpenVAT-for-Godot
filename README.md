@@ -23,12 +23,14 @@ https://github.com/user-attachments/assets/8ab836ec-a085-454a-b0d3-394aaa6a44b2
 	- minimum/maximun vectors
 	- animation track meta data
 - Can support multiple baked in animation tracks (supports a total of 4096 combined frames).
+- Supoorts both looping and non-looping animation tracks. 
 
 ## `OpenVATMultiMeshInstance3D` features
 
 - Ability to set a unique animation track per instance.
 - Ability to change animation track at any time per instance.
 - Ability to control the alpha channel for individual instances.  Also includes easy fade in/out tweened functions.
+- Ability to restart the non-looping animation tracks for individual instances.
 - All the `MultiMeshInstance3D` features such as a unique transform (scale, rotation, and position) per instance.
 - Works on all renderers, and on HTML builds.
 
@@ -37,8 +39,6 @@ https://github.com/user-attachments/assets/8ab836ec-a085-454a-b0d3-394aaa6a44b2
 - Mesh must be less than 8192 vertices. Verticies count needs to be constant across all animation frames.
 - Total number of frames for all animations must be less than 4096.
 - No blending or mixing of animation tracks.
-- Although the complete OpenVAT animation meta data is imported and stored in the `OpenVATMultiMeshInstance3D` node, `framerate` and `isLooping` are ignored. All animation tracks will use the same framerate.
-All animation tracks will loop.
 - `MultiMeshInstance3D` `custom_data` is used by this plugin so you will not have access to use it.
 
 ## Product Roadmap
@@ -46,8 +46,8 @@ All animation tracks will loop.
 | Version | Status | Features |
 |---|---|---|
 | V0.0.1 | ✅Released | OpenVAT JSON file import.  New `OpenVATMultimeshInstance3D` node. Basic instanced animation track control. Instanced alpha channel control. Roughness, Metallic, Normal Map texture support in shader. |
-| V0.1.0 | 💡Analysis | Instanced `isLooping` and `framerate` support using the `INSTANCE_COLOR.r` field. |
-| V0.2.0 | 📈Planning | Animation blending support using the `INSTANCE_COLOR.gba` fields for second animation track's `start/end/timestamp` data. Blending transition duration will be a global uniform. |
+| V0.0.2 | ✅Released | Instanced `isLooping` and `framerate` support using the `INSTANCE_COLOR.rg` fields. |
+| V0.0.3 | 💀Cancelled | Animation blending support needs at a minimum `3` more instanced uniforms which Godot does not provide. Need to wait for https://github.com/godotengine/godot-proposals/issues/8666 |
 
 ## Requirements
 
@@ -118,7 +118,7 @@ You can manually force the loading of the JSON file by click on the `Import JSON
 > The JSON file is automatically imported on `_ready()` which means it imports on every activation.  This makes sure that the latest JSON file is used.
 
 > [!NOTE]  
-> If no animation tracks are defined in the OpenVAT JSON file, then a `Default` animation track is created on import.
+> If no animation tracks are defined in the OpenVAT JSON file, then a `Default` looping animation track is created on import.
 
 The JSON importer outputs information on the console:
 
@@ -206,7 +206,7 @@ To get the animation track index from the start and end frames, use:
 
 `get_track_number_from_start_end_frames(start: int, end: int) -> int`
 
-### Instanced `custom_data` information
+### Instanced `custom_data` shader uniforms
 
 The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and instanced shader.  Here is how it is used:
 
@@ -214,6 +214,11 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 - `custom_data.g` = **animation start frame**
 - `custom_data.b` = **animation end frame**
 - `custom_data.a` = **alpha of mesh**: used to fade in/out a unique instance
+
+### Instanced `color` shader uniforms
+
+- `color.r` = **is_looping** 1.0 = true, 0.0 = false
+- `color.g` = **timestamp** for the non-looping animation, which is also known as one_shot.
 
 ## Common Issues
 
@@ -223,10 +228,12 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 
 ❓**Question**: My animations still looked deformed. 💡**Answer**: This is a Blender/OpenVAT usage issue, and it could be caused by many things.  Check out the OpenVAT [videos](https://www.youtube.com/@LukeStilson), or post an issue on OpenVAT on [GitHub](https://github.com/sharpen3d/openvat). 
 
+❓**Question**: How do I restart a non-looping animation for a specific instance? 💡**Answer**:  Use `reset_one_shot(instance_id)` or `update_instance_track(instance_id: int, track_number: int)` both assume the animation track is set with `is_looping =  false`.
+
 ❓**Question**: How do I implement a static pose in an animation track:
  
   - 💡**Answer 1**: Create a 3 frame action on your NLA strip in Blender with each keyframe being the same, then do an OpenVAT export, and re-import into Godot.  The shader will loop these 3 frames, and look like the model is static because the vertex positions have not moved. 
-  - 💡**Answer 2**: Manually encode another animation track with the same startFrame and endFrame, then do an OpenVAT export, and re-import into Godot.
+  - 💡**Answer 2**: Manually encode another animation track in the JSON file with the same startFrame and endFrame, then do an OpenVAT export, and re-import JSON file into Godot.
 
 ## Demo
 

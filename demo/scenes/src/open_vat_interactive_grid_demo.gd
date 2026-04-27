@@ -62,7 +62,7 @@ func placeInstance(i: int):
 	location.z = y
 	location.y = 0.1
 
-	vat_multi_mesh_instance_3d.update_instance_track(i, 0)
+	vat_multi_mesh_instance_3d.update_instance_track(i, 2)
 
 	node3D.rotation.y = randi_range(0,3) * (PI/2)
 	node3D.position = location
