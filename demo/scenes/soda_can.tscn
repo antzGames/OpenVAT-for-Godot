@@ -35,7 +35,7 @@ buffer = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
 [node name="SodaCanDemo" type="Node3D" unique_id=391254406]
 script = ExtResource("1_qxtla")
-title = "Soda Cans - MultimeshInstance3D"
+title = "Soda Cans - MultiMeshInstance3D"
 next_scene = ExtResource("2_mi45e")
 randomize_rotation = true
 base_scale = 20.0

@@ -96,10 +96,10 @@ func do_raycast():
 			location.y = 0.1
 			
 			if demo_index == 0:
-				if location.distance_to(result["position"]) < grid_size.y * 3:
+				if location.distance_to(result["position"]) < grid_size.y:
 					vat_multi_mesh_instance_3d.update_instance_track(instance, 0)
 			elif demo_index == 1:
-				if location.distance_to(result["position"]) < grid_size.y:
+				if location.distance_to(result["position"]) < grid_size.y * 3:
 					vat_multi_mesh_instance_3d.update_instance_track(instance, 1)
 
 func _on_shadows_check_button_toggled(toggled_on: bool) -> void:

@@ -267,8 +267,8 @@ func reset_one_shot(instance_id: int):
 		custom_color.r = 1.0
 	else:
 		custom_color.r = 0.0
-		custom_color.g = get_current_timestamp()
 	
+	custom_color.g = get_current_timestamp()
 	multimesh.set_instance_color(instance_id, custom_color)
 
 func get_current_timestamp() -> float:

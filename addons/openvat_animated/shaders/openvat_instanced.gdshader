@@ -128,7 +128,8 @@ void vertex() {
 	float next_frame;
 	
 	if (is_looping) {
-		time_scale_normalized = TIME * (speed / num_frames);
+		//time_scale_normalized = TIME * (speed / num_frames);
+		time_scale_normalized = (TIME - timestamp) * (speed / num_frames);
 		frame_time = mod(time_scale_normalized, 1.0);
 		current_frame = start_frame + mod((frame_time * num_frames) + frame_offset, num_frames);
 		next_frame = current_frame + 1.0;

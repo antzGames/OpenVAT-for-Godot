@@ -206,7 +206,7 @@ To get the animation track index from the start and end frames, use:
 
 `get_track_number_from_start_end_frames(start: int, end: int) -> int`
 
-### Instanced `custom_data` shader uniforms
+### Instanced `custom_data` and instanced `color` shader uniforms
 
 The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and instanced shader.  Here is how it is used:
 
@@ -215,10 +215,8 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 - `custom_data.b` = **animation end frame**
 - `custom_data.a` = **alpha of mesh**: used to fade in/out a unique instance
 
-### Instanced `color` shader uniforms
-
 - `color.r` = **is_looping** 1.0 = true, 0.0 = false
-- `color.g` = **timestamp** for the non-looping animation, which is also known as one_shot.
+- `color.g` = **timestamp** used to keep track of when an animation was set or the one_shot has been reset.
 
 ## Common Issues
 
