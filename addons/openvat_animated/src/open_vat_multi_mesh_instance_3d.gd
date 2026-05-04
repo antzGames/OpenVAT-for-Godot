@@ -32,14 +32,18 @@ var _rollover_value : float = ProjectSettings.get_setting("rendering/limits/time
 		if !multimesh:
 			_create_multimesh()
 		if multimesh.mesh:
-			multimesh.mesh.surface_get_material(0).set_shader_parameter("min_values", value)
+			var mat = multimesh.mesh.surface_get_material(0)
+			if mat is ShaderMaterial:
+				mat.set_shader_parameter("min_values", value)
 @export var max_values: Vector3:
 	set(value):
 		max_values = value
 		if !multimesh:
 			_create_multimesh()
 		if multimesh and multimesh.mesh:
-			multimesh.mesh.surface_get_material(0).set_shader_parameter("max_values", value)
+			var mat = multimesh.mesh.surface_get_material(0)
+			if mat is ShaderMaterial:
+				mat.set_shader_parameter("max_values", value)
 
 ## Animation tracks: [br]
 ## The array of animation track with OpenVAT JSON meta data.[br]
