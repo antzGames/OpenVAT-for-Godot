@@ -258,25 +258,28 @@ func get_track_number_from_start_end_frames(start: int, end: int) -> int:
 ## Returns -1 if not found.
 func get_track_number_from_instance(instance_id: int) -> int:
 	return get_track_number_from_animation(get_animation_from_instance(instance_id))
-	
-#endregion
-
 
 ## Restarts the one shot animation for a specific instance_id.[br][br]
 ## Only valid if instanced animation track  [is_looping] is true
 func reset_one_shot(instance_id: int):
 	custom_color = multimesh.get_instance_color(instance_id)
 	
-	if get_animation_from_instance(instance_id).isLooping:
+	var anim: OpenVATAnimationTrack = get_animation_from_instance(instance_id)
+	
+	if anim.isLooping:
 		custom_color.r = 1.0
 	else:
 		custom_color.r = 0.0
 	
 	custom_color.g = get_current_timestamp()
+	custom_color.b = anim.framerate
+	
 	multimesh.set_instance_color(instance_id, custom_color)
 
 func get_current_timestamp() -> float:
 	return fmod((float(Time.get_ticks_msec()) / 1000.0), _rollover_value) - 0.5
+	
+#endregion
 
 
 #region JSON config file import
@@ -322,10 +325,10 @@ func import_json():
 		if anim_dict.is_empty():
 			animation_tracks.clear()
 			var track: OpenVATAnimationTrack = OpenVATAnimationTrack.new()
-			track.set_track("Default", 0, frames-1 , 24 , true)
+			track.set_track("Default", 0, frames-1 , 30 , true)
 			animation_tracks.append(track)
 			print_rich(str("❌[color=orange]No animation meta data found.[/color]  Creating one track with ", frames, " frames."))
-			print_rich(str("  🎞️Animation track 1: [color=yellow]", track.name, "[/color] Start/End Frames: [color=yellow]", track.startFrame , "-", track.endFrame, "[/color]"))			
+			print_rich(str("  🎞️Animation track 1: [color=yellow]", track.name, "[/color] Start/End Frames: [color=yellow]", track.startFrame , "-", track.endFrame, "[/color] FPS: [color=yellow]", track.framerate,"[/color]"))
 		else:
 			animation_tracks.clear()
 			var i: int = 0
@@ -333,10 +336,10 @@ func import_json():
 			for key in anim_dict:
 				var track: OpenVATAnimationTrack = OpenVATAnimationTrack.new()
 				track.set_track(key, int(anim_dict[key]["startFrame"])-1, int(anim_dict[key]["endFrame"])-1, int(anim_dict[key]["framerate"]), bool(int(anim_dict[key]["looping"])))
-				print_rich(str("  🎞️Animation track ", i, ": [color=yellow]", key, "[/color] Start/End Frames: [color=yellow]", track.startFrame , "-", track.endFrame, "[/color]"))
+				print_rich(str("  🎞️Animation track ", i, ": [color=yellow]", key, "[/color] Start/End Frames: [color=yellow]", track.startFrame , "-", track.endFrame, "[/color] FPS: [color=yellow]", track.framerate,"[/color]"))
 				animation_tracks.append(track)
 				i += 1
-			print_rich(str("✅Total animation tracks parsed: [color=yellow]",animation_tracks.size(),"[/color]"))			
+			print_rich(str("✅Total animation tracks parsed: [color=yellow]",animation_tracks.size(),"[/color]"))	
 			
 		print_rich(str("✅Frames parsed: [color=yellow]",frames,"[/color]"))
 		print_rich("[color=cyan]OpenVAT import completed.[/color]")

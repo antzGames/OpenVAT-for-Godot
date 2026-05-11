@@ -23,7 +23,8 @@ https://github.com/user-attachments/assets/8ab836ec-a085-454a-b0d3-394aaa6a44b2
 	- minimum/maximun vectors
 	- animation track meta data
 - Can support multiple baked in animation tracks (supports a total of 4096 combined frames).
-- Supoorts both looping and non-looping animation tracks. 
+- Supports both looping and non-looping animation tracks. 
+- Supports unique frame rate (FPS) per animation track.
 
 ## `OpenVATMultiMeshInstance3D` features
 
@@ -217,6 +218,7 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 
 - `color.r` = **is_looping** 1.0 = true, 0.0 = false
 - `color.g` = **timestamp** used to keep track of when an animation was set or the one_shot has been reset.
+- `color.b` = **animation frame rate**: mast be greater than zero
 
 ## Common Issues
 

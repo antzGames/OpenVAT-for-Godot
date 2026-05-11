@@ -16,31 +16,31 @@
 		"Walk": {
 			"startFrame": 1,
 			"endFrame": 40,
-			"framerate": 30,
+			"framerate": 24,
 			"looping": true
 		},
 		"Cheer": {
 			"startFrame": 41,
 			"endFrame": 81,
-			"framerate": 30,
+			"framerate": 24,
 			"looping": true
 		},
 		"Attack": {
 			"startFrame": 82,
 			"endFrame": 140,
-			"framerate": 30,
+			"framerate": 12,
 			"looping": true
 		},
-		"Idle": {
+		"Twerk": {
 			"startFrame": 141,
 			"endFrame": 243,
-			"framerate": 30,
+			"framerate": 48,
 			"looping": true
 		},
 		"Death": {
 			"startFrame": 244,
 			"endFrame": 248,
-			"framerate": 30,
+			"framerate": 1,
 			"looping": true
 		}
 	}

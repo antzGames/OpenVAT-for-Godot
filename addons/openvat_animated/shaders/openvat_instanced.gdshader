@@ -37,7 +37,9 @@ It has total of 4 floats. All renderers supported.
 			if looping - when the looping animation started.
 			if non-lopping - Tells the shader when the one_shot has been reset.
 
-	Blue channel: not used
+	Blue channel: 
+			animation frame rate - must be greater than 0
+	
 	Alpha channel: not used
 */
 
@@ -56,7 +58,7 @@ uniform vec3 max_values;
 ///** Animation frame shown when paused */
 //uniform int pause_frame;
 /** Number of frames per second. The default value in Blender is 30 (see "Scene > Format > Frame Rate" in Blender). */
-uniform float speed = 30.0;
+//uniform float speed = 30.0;
 group_uniforms;
 
 group_uniforms Albedo;
@@ -115,6 +117,7 @@ void vertex() {
 	float end_frame = custom_data.b;
 	float num_frames = end_frame - start_frame;
 	float frame_offset = num_frames * custom_data.r;
+	float speed = max(1, color_data.b);
 
 	ivec2 resolution = textureSize(vertex_animation_texture, 0);
 
