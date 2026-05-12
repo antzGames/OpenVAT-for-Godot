@@ -41,6 +41,7 @@ https://github.com/user-attachments/assets/8ab836ec-a085-454a-b0d3-394aaa6a44b2
 - Total number of frames for all animations must be less than 4096.
 - No blending or mixing of animation tracks.
 - `MultiMeshInstance3D` `custom_data` is used by this plugin so you will not have access to use it.
+- The new `OpenVATMultiMeshInstance3D` will have `physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF`. The reason is that Godot interpolates the `custom_data` uniform which we do not want.  You can still use physics interpolation in your project though.
 
 ## Product Roadmap
 

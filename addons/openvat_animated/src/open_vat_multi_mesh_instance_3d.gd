@@ -93,6 +93,7 @@ func _ready() -> void:
 		multimesh.use_custom_data = true # offsets, start/end frame, alpha
 		multimesh.use_colors = true  # isLooping, timestamp
 		multimesh.instance_count = instance_count
+		physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF  # becasue Godot interpolates custom_data, which we do not want
 	else:
 		_create_multimesh()
 		
