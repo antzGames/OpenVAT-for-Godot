@@ -217,9 +217,11 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 - `custom_data.b` = **animation end frame**
 - `custom_data.a` = **alpha of mesh**: used to fade in/out a unique instance
 
+The inherited `MultiMeshInstance3D` `color_instance` is used by this plugin and instanced shader.  Here is how it is used:
+
 - `color.r` = **is_looping** 1.0 = true, 0.0 = false
 - `color.g` = **timestamp** used to keep track of when an animation was set or the one_shot has been reset.
-- `color.b` = **animation frame rate**: mast be greater than zero
+- `color.b` = **animation frame rate**: must be greater than zero
 
 ## Common Issues
 
