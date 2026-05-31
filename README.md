@@ -229,7 +229,7 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 
 ❓**Question**: My animations still looked deformed. 💡**Answer**: This is a Blender/OpenVAT usage issue, and it could be caused by many things. Less obvious issues in your Blender model that can cause problems:
 - Are you using modifiers that increase your vertex count like the **Sub-Divide** modifier? This is not supported.  Make sure your vertex count remains constant across all animation frames.
-- Did you space your NLA tracks with 1 frame between animations? You cannot have one tracks end frame be the same as the next track's start frame.
+- Did you space your NLA tracks with 1 frame between animations? You cannot have one track's end frame be the same as the next track's start frame.
 - The first NLA track has to start on frame 1.
 - Make sure you set the **DEFORMATION BASIS** in OpenVAT correctly.  If you use `start frame` then the animation player in Blender should be set to frame 1.
 - **Last thing you can try**: Hide all previous collections in Blender and only play the animation for the mesh in the **OpenVATPreview** collection which is created after you bake. If it looks good in Blender, then export the mesh under the OpenVATPreview collection manually as a gltf binary (GLB).  Use this GLB instead of the one that was created in the bake.
