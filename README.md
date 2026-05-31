@@ -40,8 +40,8 @@ https://github.com/user-attachments/assets/8ab836ec-a085-454a-b0d3-394aaa6a44b2
 - Mesh must be less than 8192 vertices. Verticies count needs to be constant across all animation frames.
 - Total number of frames for all animations must be less than 4096.
 - No blending or mixing of animation tracks.
-- `MultiMeshInstance3D` `custom_data` is used by this plugin so you will not have access to use it.
-- The new `OpenVATMultiMeshInstance3D` will have `physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF`. The reason is that Godot interpolates the `custom_data` uniform which we do not want.  You can still use physics interpolation in your project though.
+- `MultiMeshInstance3D`'s `custom_data` and `instance_color` instanced uniforms are used by this plugin so you will not have access to use it.
+- The new `OpenVATMultiMeshInstance3D` will have `physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF`. The reason is that Godot interpolates the `custom_data` and `instance_color` uniform which we do not want.  You can still use physics interpolation in your project though.
 
 ## Product Roadmap
 
@@ -227,7 +227,14 @@ The inherited `MultiMeshInstance3D` `custom_data` is used by this plugin and ins
 
 ❓**Question**: My mesh's verticies are cracked or all over the place. 💡**Answer**: Re-import your VAT texture (`.exr` file) with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
 
-❓**Question**: My animations still looked deformed. 💡**Answer**: This is a Blender/OpenVAT usage issue, and it could be caused by many things.  Check out the OpenVAT [videos](https://www.youtube.com/@LukeStilson), or post an issue on OpenVAT on [GitHub](https://github.com/sharpen3d/openvat). 
+❓**Question**: My animations still looked deformed. 💡**Answer**: This is a Blender/OpenVAT usage issue, and it could be caused by many things. Less obvious issues in your Blender model that can cause problems:
+- Are you using modifiers that increase your vertex count like the **Sub-Divide** modifier? This is not supported.  Make sure your vertex count remains constant across all animation frames.
+- Did you space your NLA tracks with 1 frame between animations? You cannot have one tracks end frame be the same as the next track's start frame.
+- The first NLA track has to start on frame 1.
+- Make sure you set the **DEFORMATION BASIS** in OpenVAT correctly.  If you use `start frame` then the animation player in Blender should be set to frame 1.
+- **Last thing you can try**: Hide all previous collections in Blender and only play the animation for the mesh in the **OpenVATPreview** collection which is created after you bake. If it looks good in Blender, then export the mesh under the OpenVATPreview collection manually as a gltf binary (GLB).  Use this GLB instead of the one that was created in the bake.
+
+Again, these issues are not casued by this plugin but by user error or the OpenVAT Blender plugin. Check out the OpenVAT [videos](https://www.youtube.com/@LukeStilson), or post an issue on OpenVAT on [GitHub](https://github.com/sharpen3d/openvat) if you still have problems.. 
 
 ❓**Question**: How do I restart a non-looping animation for a specific instance? 💡**Answer**:  Use `reset_one_shot(instance_id)` or `update_instance_track(instance_id: int, track_number: int)` both assume the animation track is set with `is_looping =  false`.
 
