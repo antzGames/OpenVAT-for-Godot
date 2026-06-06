@@ -1,0 +1,26 @@
+[gd_resource type="VisualShader" format=3 uid="uid://c640m4ibxheep"]
+
+[ext_resource type="Texture2D" uid="uid://su1f5loq431n" path="res://demo/assets/skeleton/skeleton_texture.png" id="1_xjnxc"]
+[ext_resource type="Script" uid="uid://b7actsb41ak76" path="res://addons/openvat_animated/visual_shaders/openvat_vs.gd" id="2_cswk6"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_rbcnb"]
+texture = ExtResource("1_xjnxc")
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_xjnxc"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_hstug"]
+initialized = true
+script = ExtResource("2_cswk6")
+
+[resource]
+nodes/vertex/0/position = Vector2(1013.3333, 160)
+nodes/vertex/2/node = SubResource("VisualShaderNodeCustom_hstug")
+nodes/vertex/2/position = Vector2(40, 266.66666)
+nodes/vertex/connections = PackedInt32Array(2, 0, 0, 0, 2, 1, 0, 1)
+nodes/fragment/0/position = Vector2(1600, -40)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_rbcnb")
+nodes/fragment/2/position = Vector2(146.66667, -53.333332)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_xjnxc")
+nodes/fragment/3/position = Vector2(407.38144, 593.2118)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 19)
