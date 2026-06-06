@@ -245,13 +245,18 @@ Again, these issues are not casued by this plugin but by user error or the OpenV
   - 💡**Answer 1**: Create a 3 frame action on your NLA strip in Blender with each keyframe being the same, then do an OpenVAT export, and re-import into Godot.  The shader will loop these 3 frames, and look like the model is static because the vertex positions have not moved. 
   - 💡**Answer 2**: Manually encode another animation track in the JSON file with the same startFrame and endFrame, then do an OpenVAT export, and re-import JSON file into Godot.
 
-## Demo
+## Using Godot Visual Shaders with VAT
 
-A demo is provided.  Just run the project.  Pressing `SPACE` or `F1` key will load the next scene.
+RakkenTi has added the `OpenVatApplier` node to Visual Shaders.
 
-Pressing the `F3` key will display more FPS information.
+This now allows for more advanced visuals while still being VAT-compatible.
 
-`MSAA 2x` is set at the project level.  Turning off `MSAA` improves performance.
+**Instructions**:
+1. Inside Vertex mode, create an `OpenVatApplier` node.
+2. Use the vertex and normal outputs as the basis for the vertex shader.
+
+Now you can also freely apply your own shader logic while still having VAT animations!
+Albedo textures can still be used like the original shader, just use the Fragment mode like normal.
 
 ## Using the OpenVAT Godot shader on its own
 
@@ -265,6 +270,14 @@ The most up to date version can be downloaded from the OpenVAT GitHub at: https:
 
 You will have to set the min/max values, and all other shader parameters manually. 
 Some of the demo scenes (`durty_rag.tscn`, `cloth.tscn`, `jello.tscn`) use the default OpenVAT shader, so take a look at the code to see how it is done.
+
+## Demo
+
+A demo is provided.  Just run the project.  Pressing `SPACE` or `F1` key will load the next scene.
+
+Pressing the `F3` key will display more FPS information.
+
+`MSAA 2x` is set at the project level.  Turning off `MSAA` improves performance.
 
 ## OpenVAT MIT License for shader in `OpenVAT-Engine_Tools`
 
