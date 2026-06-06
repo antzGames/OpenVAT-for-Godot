@@ -34,6 +34,7 @@ https://github.com/user-attachments/assets/8ab836ec-a085-454a-b0d3-394aaa6a44b2
 - Ability to restart the non-looping animation tracks for individual instances.
 - All the `MultiMeshInstance3D` features such as a unique transform (scale, rotation, and position) per instance.
 - Works on all renderers, and on HTML builds.
+- Visual Shader support so you can also freely apply your own shader logic while still having VAT animations.
 
 ## Limitations
 
