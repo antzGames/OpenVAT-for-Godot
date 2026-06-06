@@ -247,7 +247,7 @@ Again, these issues are not casued by this plugin but by user error or the OpenV
 
 ## Using Godot Visual Shaders with VAT
 
-RakkenTi has added the `OpenVatApplier` node to Visual Shaders.
+[RakkenTi](https://github.com/RakkenTi) has added a `OpenVatApplier` node to be used in Visual Shaders.
 
 This now allows for more advanced visuals while still being VAT-compatible.
 
