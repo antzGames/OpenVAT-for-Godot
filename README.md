@@ -253,11 +253,18 @@ Again, these issues are not casued by this plugin but by user error or the OpenV
 This now allows for more advanced visuals while still being VAT-compatible.
 
 **Instructions**:
-1. Inside Vertex mode, create an `OpenVatApplier` node.
+1. Inside **Vertex** mode, create an `OpenVatApplier` node.
 2. Use the vertex and normal outputs as the basis for the vertex shader.
 
-Now you can also freely apply your own shader logic while still having VAT animations!
-Albedo textures can still be used like the original shader, just use the Fragment mode like normal.
+<img width="511" height="273" alt="Screenshot from 2026-06-06 05-33-25" src="https://github.com/user-attachments/assets/fe30e7b2-3e20-4219-8780-4afce0703208" />
+
+3. Inside **Fragment** mode, add your albedo texture (also your normal maps, roughness, metallic textures) like in the OpenVAT shader.
+
+<img width="518" height="389" alt="Screenshot from 2026-06-06 05-32-33" src="https://github.com/user-attachments/assets/43d245b9-b132-40a7-a318-bd5d8fabc255" />
+
+4. Now you can also freely apply your own shader logic while still having VAT animations!
+
+One of the demos has skeletons with a dissolver effect made with a visual shader.
 
 ## Using the OpenVAT Godot shader on its own
 
