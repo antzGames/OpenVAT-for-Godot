@@ -1,7 +1,7 @@
 [gd_resource type="VisualShader" format=3 uid="uid://ba5d5a00abtol"]
 
 [ext_resource type="Script" uid="uid://chuuhuiu1lyde" path="res://demo/assets/visual_shader/PerlinNoise3DNode.gd" id="1_1r1m7"]
-[ext_resource type="Script" uid="uid://b7actsb41ak76" path="res://addons/openvat_animated/visual_shaders/openvat_vs.gd" id="2_aosf5"]
+[ext_resource type="Script" uid="uid://b7actsb41ak76" path="res://addons/openvat_animated/visual_shaders/openvat_vs_simple.gd" id="2_aosf5"]
 [ext_resource type="Texture2D" uid="uid://su1f5loq431n" path="res://demo/assets/skeleton/skeleton_texture.png" id="2_uuo70"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_7ghpb"]
