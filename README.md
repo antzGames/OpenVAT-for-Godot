@@ -248,15 +248,15 @@ Again, these issues are not casued by this plugin but by user error or the OpenV
 
 ## Using Godot Visual Shaders with VAT
 
-[RakkenTi](https://github.com/RakkenTi) has added a `OpenVatApplier` node to be used in Visual Shaders.
+[RakkenTi](https://github.com/RakkenTi) has added a `SimpleVATSource` and `AdvancedVATSource` node to be used in Visual Shaders.
 
 This now allows for more advanced visuals while still being VAT-compatible.
 
 **Instructions**:
-1. Inside **Vertex** mode, create an `OpenVatApplier` node.
+1. Inside **Vertex** mode, create an `SimpleVATSource` node.
 2. Use the vertex and normal outputs as the basis for the vertex shader.
 
-<img width="511" height="273" alt="Screenshot from 2026-06-06 05-33-25" src="https://github.com/user-attachments/assets/fe30e7b2-3e20-4219-8780-4afce0703208" />
+<img width="659" height="339" alt="{89BF3799-D5EE-4817-950A-2CFEB4959362}" src="https://github.com/user-attachments/assets/8fa7eaa0-3159-4cee-8adc-c698a9987e6d" />
 
 3. Inside **Fragment** mode, add your albedo texture (also your normal maps, roughness, metallic textures) like in the OpenVAT shader.
 
@@ -265,6 +265,11 @@ This now allows for more advanced visuals while still being VAT-compatible.
 4. Now you can also freely apply your own shader logic while still having VAT animations!
 
 One of the demos has skeletons with a dissolver effect made with a visual shader.
+
+### AdvancedVATSource
+If you would like to control the tangent and binormal properties, the `AdvancedVATSource` node exposes them:
+
+<img width="690" height="286" alt="{FB76ED47-0BE9-41F8-A9D4-1F6BF8D919C2}" src="https://github.com/user-attachments/assets/5744c552-943c-4a9e-b1b1-06693826c77d" />
 
 ## Using the OpenVAT Godot shader on its own
 

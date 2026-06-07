@@ -1,24 +1,25 @@
 # Visual Shader version of openvat_instanced.gdshader
 # Allows for more advanced visuals while still being VAT-compatible.
 # Instructions:
-# - Inside Vertex mode, create an OpenVatApplier node.
-# - Use the vertex and normal outputs as the basis for the vertex shader.
+# - Inside Vertex mode, create an SimpleVATSource node.
+# - Use the vertex, and normal outputs as the basis for the vertex shader.
+# - For tangent and binormal control, use the advanced node.
 # Now you can also freely apply your own shader logic while still having VAT animations!
 # Albedo textures can still be used like the original shader, just use the Fragment mode like normal.
 # Original Source (credit): https://github.com/antzGames/OpenVAT-for-Godot
 # Fork Source: https://github.com/RakkenTi/OpenVAT-for-Godot-Extended
 @tool
 extends VisualShaderNodeCustom
-class_name VisualShaderNodeOpenVAT
+class_name VisualShaderNodeOpenVATSimple
 
 func _get_name() -> String:
-	return "OpenVATApplier"
+	return "SimpleVATSource"
 
 func _get_category() -> String:
 	return "OpenVAT"
 
 func _get_description() -> String:
-	return "Integrates OpenVAT animation textures natively. All parameter controls are automatically added to the inspector!"
+	return "Input source for OpenVAT properties."
 
 func _get_return_icon_type() -> PortType:
 	return VisualShaderNode.PORT_TYPE_SCALAR
@@ -106,6 +107,10 @@ func _get_code(input_vars: Array[String], output_vars: Array[String], mode: Shad
 	vec3 norm_interp = mix(norm_curr, norm_next, blend);
 	vec3 norm_rescaled = 2.0 * norm_interp - 1.0;
 	vec3 norm_b2g = vec3(norm_rescaled.x, norm_rescaled.z, -norm_rescaled.y);
+	vec3 final_norm = normalize(norm_b2g);
 
-	%s = normalize(norm_b2g);
+	%s = final_norm;
+
+	TANGENT = normalize(vec3(abs(final_norm.y) + abs(final_norm.z), 0.0, -abs(final_norm.x)));
+	BINORMAL = normalize(vec3(0.0, abs(final_norm.x) + abs(final_norm.z), -abs(final_norm.y)));
 	""" % [output_vars[0], output_vars[1]]
