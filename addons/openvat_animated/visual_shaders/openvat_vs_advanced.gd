@@ -1,7 +1,7 @@
 # Visual Shader version of openvat_instanced.gdshader
 # Allows for more advanced visuals while still being VAT-compatible.
 # Instructions:
-# - Inside Vertex mode, create an OpenVatApplier node.
+# - Inside Vertex mode, create an AdvancedVATSource node.
 # - Use the vertex, normal, tangent, and binormal outputs as the basis for the vertex shader.
 # Now you can also freely apply your own shader logic while still having VAT animations!
 # Albedo textures can still be used like the original shader, just use the Fragment mode like normal.

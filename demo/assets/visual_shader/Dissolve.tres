@@ -1,8 +1,8 @@
 [gd_resource type="VisualShader" format=3 uid="uid://ba5d5a00abtol"]
 
 [ext_resource type="Script" uid="uid://chuuhuiu1lyde" path="res://demo/assets/visual_shader/PerlinNoise3DNode.gd" id="1_1r1m7"]
-[ext_resource type="Script" uid="uid://b7actsb41ak76" path="res://addons/openvat_animated/visual_shaders/openvat_vs_simple.gd" id="2_aosf5"]
 [ext_resource type="Texture2D" uid="uid://su1f5loq431n" path="res://demo/assets/skeleton/skeleton_texture.png" id="2_uuo70"]
+[ext_resource type="Script" uid="uid://ch8xkjwxu8wir" path="res://addons/openvat_animated/visual_shaders/openvat_vs_advanced.gd" id="3_uuo70"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_7ghpb"]
 parameter_name = "Edge_Color"
@@ -100,9 +100,9 @@ input_name = "vertex"
 varying_name = "WorldPos"
 varying_type = 4
 
-[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_uuo70"]
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_shh2l"]
 initialized = true
-script = ExtResource("2_aosf5")
+script = ExtResource("3_uuo70")
 
 [resource]
 modes/cull = 2
@@ -115,9 +115,9 @@ nodes/vertex/4/node = SubResource("VisualShaderNodeInput_klaiq")
 nodes/vertex/4/position = Vector2(-853.3333, 506.66666)
 nodes/vertex/5/node = SubResource("VisualShaderNodeVaryingSetter_igxk4")
 nodes/vertex/5/position = Vector2(-146.66667, 613.3333)
-nodes/vertex/6/node = SubResource("VisualShaderNodeCustom_uuo70")
-nodes/vertex/6/position = Vector2(106.666664, 66.666664)
-nodes/vertex/connections = PackedInt32Array(2, 0, 3, 0, 4, 0, 3, 1, 3, 0, 5, 0, 6, 0, 0, 0, 6, 1, 0, 1)
+nodes/vertex/7/node = SubResource("VisualShaderNodeCustom_shh2l")
+nodes/vertex/7/position = Vector2(100, 140)
+nodes/vertex/connections = PackedInt32Array(2, 0, 3, 0, 4, 0, 3, 1, 3, 0, 5, 0, 7, 0, 0, 0, 7, 1, 0, 1, 7, 2, 0, 2, 7, 3, 0, 3)
 nodes/fragment/0/position = Vector2(400, 140)
 nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_njvwl")
 nodes/fragment/5/position = Vector2(-2240, 973.3333)
