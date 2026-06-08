@@ -60,6 +60,7 @@ shadow_enabled = true
 mesh = SubResource("PlaneMesh_m56k3")
 
 [node name="OpenVATMultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=1402752591]
+physics_interpolation_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 multimesh = SubResource("MultiMesh_wsgid")
 script = ExtResource("4_shkfh")

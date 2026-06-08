@@ -153,7 +153,7 @@ func update_all_instances(animation_offset: float, track_number: int, alpha: flo
 		update_instance_track(instance, track_number)
 		update_instance_alpha(instance, alpha)
 
-# Tweened fades
+# Tweens
 
 ## Fade out a specific instance.[br][br]
 ## [param instance_id] is the specific instance to fade.[br]
@@ -195,6 +195,28 @@ func _do_tween_fade(value: float, instance_id: int):
 	var custom_data: Color = multimesh.get_instance_custom_data(instance_id)
 	custom_data.a = value
 	multimesh.set_instance_custom_data(instance_id, custom_data)
+
+## Sink in a specific instance.[br][br]
+## [param instance_id] is the specific instance to sink down.[br]
+## [param y_amount] the amount to move the instance in the y-axis (negative value will float up)[br]
+## [param fade_out_time] the duration of the fade.[br]
+## [param start_delay] is the delay before fade starts.
+func sink_instance(instance_id: int, y_amount: float, fade_out_time: float = 1.0, start_delay: float = 0.0):
+	if fade_out_time < 0: return
+	if instance_id >= multimesh.instance_count: return
+
+	var fade_tween = create_tween()
+	fade_tween.tween_method(
+		_do_tween_sink.bind(instance_id),
+		multimesh.get_instance_transform(instance_id).origin.y,
+		multimesh.get_instance_transform(instance_id).origin.y - y_amount,
+		fade_out_time).set_delay(start_delay).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+
+func _do_tween_sink(value: float, instance_id: int):
+	var trans: Transform3D
+	trans = multimesh.get_instance_transform(instance_id)
+	trans.origin.y = value
+	multimesh.set_instance_transform(instance_id, trans)
 	
 # Play next track
 
