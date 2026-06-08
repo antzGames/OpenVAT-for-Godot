@@ -196,7 +196,7 @@ func _do_tween_fade(value: float, instance_id: int):
 	custom_data.a = value
 	multimesh.set_instance_custom_data(instance_id, custom_data)
 
-## Sink in a specific instance.[br][br]
+## Sink a specific instance.[br][br]
 ## [param instance_id] is the specific instance to sink down.[br]
 ## [param y_amount] the amount to move the instance in the y-axis (negative value will float up)[br]
 ## [param fade_out_time] the duration of the fade.[br]
