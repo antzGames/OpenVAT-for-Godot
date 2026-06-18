@@ -30,6 +30,8 @@ func _get_input_port_name(port):
 			return "scale"
 		3:
 			return "time"
+		_:
+			return ""
 
 func _get_input_port_type(port):
 	match port:
@@ -40,6 +42,8 @@ func _get_input_port_type(port):
 		2:
 			return VisualShaderNode.PORT_TYPE_SCALAR
 		3:
+			return VisualShaderNode.PORT_TYPE_SCALAR
+		_:
 			return VisualShaderNode.PORT_TYPE_SCALAR
 
 func _get_output_port_count():
