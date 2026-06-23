@@ -18,7 +18,7 @@ settings/startup_visibility=1
 config/name="OpenVAT for Godot + Animated MultimeshInstance3D support"
 config/version="1.0.0"
 run/main_scene="uid://cfhh2cys178e6"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/image="uid://dte7lad25mhoo"
 config/icon="uid://chovdonrf753h"
 

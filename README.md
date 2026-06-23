@@ -241,6 +241,9 @@ Again, these issues are not casued by this plugin but by user error or the OpenV
 
 ❓**Question**: How do I restart a non-looping animation for a specific instance? 💡**Answer**:  Use `reset_one_shot(instance_id)` or `update_instance_track(instance_id: int, track_number: int)` both assume the animation track is set with `is_looping =  false`.
 
+❓**Question**: My animations are not playing correctly. They are stuttering and jumping, not looping correctly. What could be causing this? 💡**Answer**: Make sure the the frame ranges are **unique** for each animation track. The importer should error if that is the case.
+  - For example, if one animation ends at frame 40, the next should start at frame 41, not 40, or else only one of their keyframes will be exported; this will cause broken loops.
+
 ❓**Question**: How do I implement a static pose in an animation track:
  
   - 💡**Answer 1**: Create a 3 frame action on your NLA strip in Blender with each keyframe being the same, then do an OpenVAT export, and re-import into Godot.  The shader will loop these 3 frames, and look like the model is static because the vertex positions have not moved. 

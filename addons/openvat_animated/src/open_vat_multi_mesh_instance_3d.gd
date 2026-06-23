@@ -58,7 +58,7 @@ var custom_color: Color
 #region Built in Functions
 func _enter_tree():
 	pass
-	
+
 func _exit_tree():
 	# Clean-up of the plugin goes here.
 	pass
@@ -73,19 +73,19 @@ func _get_configuration_warnings(): # display the warning on the scene dock
 	if !openvat_json_config_file:
 		warnings.push_back('No OpenVAT JSON file assigned')
 	return warnings
-	
+
 func _validate_property(property: Dictionary): # update the config warnings
 	if property.name == "animation_tracks" or property.name == "multimesh":
 		update_configuration_warnings()
 	if property.name.begins_with("multimesh"):
 		property.usage = PROPERTY_USAGE_NO_EDITOR
-	
+
 func _create_multimesh():
 	multimesh = MultiMesh.new()
 	multimesh.instance_count = 0
 	multimesh.transform_format = MultiMesh.TRANSFORM_3D
 	multimesh.use_custom_data = true
-	
+
 func _ready() -> void:
 	if multimesh:
 		multimesh.instance_count = 0
@@ -96,7 +96,7 @@ func _ready() -> void:
 		physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF  # becasue Godot interpolates custom_data, which we do not want
 	else:
 		_create_multimesh()
-		
+
 	if animation_tracks.size() == 0:
 		import_json()
 	else:
@@ -121,14 +121,14 @@ func update_instance_animation_offset(instance_id: int, animation_offset: float)
 
 ## Updates the current instance_id with the provided track_number (0..animation_tracks.size()- 1)
 func update_instance_track(instance_id: int, track_number: int):
-	if track_number < 0 or track_number > animation_tracks.size() - 1: 
+	if track_number < 0 or track_number > animation_tracks.size() - 1:
 		printerr("[OpenVATMultiMeshInstance3D] -> update_instance_track(instance_id: int, track_number: int)]: track_number is out of bounds.")
-		return 
+		return
 	custom_data = multimesh.get_instance_custom_data(instance_id)
-	custom_data.g = animation_tracks[track_number].startFrame 
+	custom_data.g = animation_tracks[track_number].startFrame
 	custom_data.b = animation_tracks[track_number].endFrame
 	multimesh.set_instance_custom_data(instance_id, custom_data)
-		
+
 	reset_one_shot(instance_id)
 
 ## Updates the current instance_id with the provided alpha (0..1)
@@ -162,10 +162,10 @@ func update_all_instances(animation_offset: float, track_number: int, alpha: flo
 func fade_out_instance(instance_id: int, fade_out_time: float = 1.0, start_delay: float = 0.0):
 	if fade_out_time < 0: return
 	if instance_id >= multimesh.instance_count: return
-	
+
 	var custom_data: Color = multimesh.get_instance_custom_data(instance_id)
 	if custom_data.a < 0: return
-	
+
 	var fade_tween = create_tween()
 	fade_tween.tween_method(
 		_do_tween_fade.bind(instance_id),
@@ -183,7 +183,7 @@ func fade_in_instance(instance_id: int, fade_in_time: float = 1.0, start_delay: 
 
 	var custom_data: Color = multimesh.get_instance_custom_data(instance_id)
 	if custom_data.a >= 1: return
-	
+
 	var fade_tween = create_tween()
 	fade_tween.tween_method(
 		_do_tween_fade.bind(instance_id),
@@ -217,7 +217,7 @@ func _do_tween_sink(value: float, instance_id: int):
 	trans = multimesh.get_instance_transform(instance_id)
 	trans.origin.y = value
 	multimesh.set_instance_transform(instance_id, trans)
-	
+
 # Play next track
 
 ## Plays the next animation track for the provided instance_id
@@ -226,7 +226,7 @@ func play_next_track_instance(instance_id: int):
 	track_number += 1
 	if track_number > animation_tracks.size() - 1: track_number = 0
 	update_instance_track(instance_id, track_number)
-	
+
 ## Plays the next animation track for ALL INSTANCES
 func play_next_track_all_instances():
 	var track_number : int
@@ -239,15 +239,15 @@ func play_next_track_all_instances():
 # Get functions
 
 ## get [animationOpenVATAnimationTrack] from instance.
-## instance must have been initialized. 
+## instance must have been initialized.
 ## Returns null if instance_id not found
 func get_animation_from_instance(instance_id: int) -> OpenVATAnimationTrack:
 	custom_data = multimesh.get_instance_custom_data(instance_id)
-	
+
 	for track: OpenVATAnimationTrack in animation_tracks:
 		if is_equal_approx(custom_data.g, float(track.startFrame)) and is_equal_approx(custom_data.b, float(track.endFrame)):
 			return track
-			
+
 	return null
 
 ## get track_number using an animation object to search animation_tracks.
@@ -256,7 +256,7 @@ func get_track_number_from_animation(animation: OpenVATAnimationTrack) -> int:
 	if !animation: return -1
 	for i in range(animation_tracks.size()):
 		if animation == animation_tracks[i]: return i
-	
+
 	return -1
 
 ## get track_number from animation track name
@@ -265,16 +265,16 @@ func get_track_number_from_name(name: String) -> int:
 	for i in range(animation_tracks.size()):
 		if animation_tracks[i].name.to_lower() == name.to_lower():
 			return i
-	
+
 	return -1
-	
+
 ## get track_number from start/end frames.[br]
 ## However [get_track_number_from_animation] is a better option.
 ## Returns -1 if not found.
 func get_track_number_from_start_end_frames(start: int, end: int) -> int:
 	for i in range(animation_tracks.size()):
 		if Vector2i(start,end) == Vector2i(animation_tracks[i].startFrame, animation_tracks[i].endFrame): return i
-	
+
 	return -1
 
 ## get current track_number from instance_id
@@ -286,22 +286,22 @@ func get_track_number_from_instance(instance_id: int) -> int:
 ## Only valid if instanced animation track  [is_looping] is true
 func reset_one_shot(instance_id: int):
 	custom_color = multimesh.get_instance_color(instance_id)
-	
+
 	var anim: OpenVATAnimationTrack = get_animation_from_instance(instance_id)
-	
+
 	if anim.isLooping:
 		custom_color.r = 1.0
 	else:
 		custom_color.r = 0.0
-	
+
 	custom_color.g = get_current_timestamp()
 	custom_color.b = anim.framerate
-	
+
 	multimesh.set_instance_color(instance_id, custom_color)
 
 func get_current_timestamp() -> float:
 	return fmod((float(Time.get_ticks_msec()) / 1000.0), _rollover_value) - 0.5
-	
+
 #endregion
 
 
@@ -332,17 +332,17 @@ func import_json():
 		print_rich(str("[color=green]"), data_received, "[/color]")
 		var j = JSON.parse_string(content)
 		var os_remap = j["os-remap"]
-		
+
 		# Min/Max vectors
 		var min_array = os_remap["Min"]
 		min_values = Vector3(float(min_array[0]), float(min_array[1]), float(min_array[2]))
 		print_rich(str("✅Minimum values parsed: [color=yellow]",min_values,"[/color]"))
-		
+
 		var max_array = os_remap["Max"]
 		max_values = Vector3(float(max_array[0]), float(max_array[1]), float(max_array[2]))
 		print_rich(str("✅Maximum values parsed: [color=yellow]",max_values,"[/color]"))
 		frames = int(os_remap["Frames"])
-		
+
 		# Animations
 		var anim_dict = j["animations"]
 		if anim_dict.is_empty():
@@ -355,17 +355,33 @@ func import_json():
 		else:
 			animation_tracks.clear()
 			var i: int = 0
+			var map: Dictionary[int, bool] = {}
 			# Loop through animation dictionary
-			for key in anim_dict:
+			for key: String in anim_dict:
 				var track: OpenVATAnimationTrack = OpenVATAnimationTrack.new()
-				track.set_track(key, int(anim_dict[key]["startFrame"])-1, int(anim_dict[key]["endFrame"])-1, int(anim_dict[key]["framerate"]), bool(int(anim_dict[key]["looping"])))
+				var start_frame: int= int(anim_dict[key]["startFrame"])
+				var end_frame: int = int(anim_dict[key]["endFrame"])
+
+				if (map.has(start_frame) || map.has(end_frame)):
+					var header = "-------------------------"
+					push_error(header + " IMPORT JSON FAILED " + header)
+					push_error("Duplicate frame range detected for animation track: [" + key.to_upper() + "]")
+					push_error("The animation: [" + key.to_upper() + "] overlaps with a previous animation.")
+					push_error("This is not allowed as it will cause animations to jitter/jump and loop incorrectly.")
+					push_error("Make sure to have unique frame ranges for each animation track, then import again.")
+					return
+
+				map.set(start_frame, true)
+				map.set(end_frame, true)
+
+				track.set_track(key, start_frame-1, end_frame-1, int(anim_dict[key]["framerate"]), bool(int(anim_dict[key]["looping"])))
 				print_rich(str("  🎞️Animation track ", i, ": [color=yellow]", key, "[/color] Start/End Frames: [color=yellow]", track.startFrame , "-", track.endFrame, "[/color] FPS: [color=yellow]", track.framerate,"[/color]"))
 				animation_tracks.append(track)
 				i += 1
-			print_rich(str("✅Total animation tracks parsed: [color=yellow]",animation_tracks.size(),"[/color]"))	
-			
+			print_rich(str("✅Total animation tracks parsed: [color=yellow]",animation_tracks.size(),"[/color]"))
+
 		print_rich(str("✅Frames parsed: [color=yellow]",frames,"[/color]"))
-		print_rich("[color=cyan]OpenVAT import completed.[/color]")
+		print_rich("[color=cyan][b]OpenVAT import completed.[/b][/color]")
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", content, " at line ", json.get_error_line())
 #endregion
