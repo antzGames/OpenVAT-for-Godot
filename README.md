@@ -292,6 +292,11 @@ Pressing the `F3` key will display more FPS information.
 
 `MSAA 2x` is set at the project level.  Turning off `MSAA` improves performance.
 
+## More Antz Examples
+
+From [SMASH](https://antzgames.itch.io/smash):
+https://github.com/user-attachments/assets/0d1e3b45-2cf8-42f1-a8e1-7eeae0db930e
+
 ## OpenVAT MIT License for shader in `OpenVAT-Engine_Tools`
 
 This plugin uses a modified OpenVAT GLSL shader from the `OpenVAT-Engine_Tools` folder of 
