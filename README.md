@@ -11,6 +11,8 @@ instanced animation support, with auto OpenVAT configuration importing.
 
 You can play with the demo in your browser at: [https://antzgames.itch.io/openvat-for-godot](https://antzgames.itch.io/openvat-for-godot)
 
+Or play [SMASH](https://antzgames.itch.io/smash), where I used VATs for Kenney's 2 day game jam.
+
 ## Preview
 
 Watch a complete overview video on [YouTube](https://youtu.be/0Ok142yRlog).  I also have a [level destruction](https://youtu.be/-JMrnT9dD2g) video.
