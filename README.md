@@ -57,7 +57,7 @@ https://github.com/user-attachments/assets/8ab836ec-a085-454a-b0d3-394aaa6a44b2
 ## Requirements
 
 - Godot 4.5+
-- Blender 4.2+ with the [OpenVAT Extension](https://extensions.blender.org/add-ons/openvat/) installed.
+- Blender 4.2+ with the [OpenVAT Extension](https://extensions.blender.org/add-ons/openvat/) installed.  Note: Some Blender 5.x versions break the OpenVAT Extension, but there is a [PR](https://github.com/sharpen3d/openvat/pull/57) waiting to be merged to fix it.
 
 ## Installing this plugin
 
