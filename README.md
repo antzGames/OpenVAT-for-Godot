@@ -88,7 +88,7 @@ However, the Godot version of the OpenVAT shader assumes you exported your model
 	- `Model Format` = `glTF Binary`
 	- `Image Format` = `EXR16`
 2. The Blender OpenVAT Tool output will be 3 files. Copy these 3 files into your Godot project:
-	- a `.glb` file - single mesh version of your 3D model
+	- a `.glb` file - single mesh version of your 3D model (Note: Many have reported problems with this GLB.  If you get warping, export the mesh under the `OpenVATPreview` in Blender instead.) 
 	- a `.exr` file - vertex and normal (packed together) encoded Vertex Animation Texture (VAT)
 	- a `.json` file - contains the min/max extents and animation meta data for your model
 3. Make sure the `.exr` file is re-imported with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
@@ -232,12 +232,12 @@ The inherited `MultiMeshInstance3D` `color_instance` is used by this plugin and 
 
 ❓**Question**: My mesh's verticies are cracked or all over the place. 💡**Answer**: Re-import your VAT texture (`.exr` file) with compress mode as `Lossless` and turn off `Generate` Mipmaps. 
 
-❓**Question**: My animations still looked deformed. 💡**Answer**: This is a Blender/OpenVAT usage issue, and it could be caused by many things. Less obvious issues in your Blender model that can cause problems:
+❓**Question**: My animations still looked deformed. 💡**Answer**: This is a Blender/OpenVAT usage issue, and it could be caused by many things. Here are some things you can try to fix:
+- **MOST LIKELY FIX**: Hide all previous collections in Blender and only play the animation for the mesh in the **OpenVATPreview** collection which is created after you bake. If it looks good in Blender, then export the mesh under the OpenVATPreview collection manually as a gltf binary (GLB).  Use this GLB instead of the one that was created in the bake.
 - Are you using modifiers that increase your vertex count like the **Sub-Divide** modifier? This is not supported.  Make sure your vertex count remains constant across all animation frames.
 - Did you space your NLA tracks with 1 frame between animations? You cannot have one track's end frame be the same as the next track's start frame.
 - The first NLA track has to start on frame 1.
 - Make sure you set the **DEFORMATION BASIS** in OpenVAT correctly.  If you use `start frame` then the animation player in Blender should be set to frame 1.
-- **Last thing you can try**: Hide all previous collections in Blender and only play the animation for the mesh in the **OpenVATPreview** collection which is created after you bake. If it looks good in Blender, then export the mesh under the OpenVATPreview collection manually as a gltf binary (GLB).  Use this GLB instead of the one that was created in the bake.
 
 Again, these issues are not casued by this plugin but by user error or the OpenVAT Blender plugin. Check out the OpenVAT [videos](https://www.youtube.com/@LukeStilson), or post an issue on OpenVAT on [GitHub](https://github.com/sharpen3d/openvat) if you still have problems.. 
 
