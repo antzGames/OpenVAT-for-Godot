@@ -1,5 +1,10 @@
 # OpenVAT for Godot + Animated MultiMeshInstance3D support
 
+> [!IMPORTANT]  
+> Many people are encountering issues with the OpenVAT Blender toolkit.  It does not seem to create valid VATs the majority of the time.  In addition it no longer works with the latest Blender 5.x.  Unfortunately PRs trying to fix the issues are not being looked at.
+>
+> Therefore, take a look at my new video showing the complete workflow from Mesh2Motion to Godot using my [older plugin](https://github.com/antzGames/Godot_Vertex_Animation_Textures_Plugin) that has been updated with all the features that are present with OpenVAT for Godot.  Here is the video: https://youtu.be/twFFcn4Q0fQ
+
 A plugin that provides [OpenVAT](https://openvat.org/) support to Godot.
 
 OpenVAT is a Blender-native toolkit for baking Vertex Animation Textures (VATs) 
