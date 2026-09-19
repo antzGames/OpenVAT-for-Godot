@@ -8,39 +8,58 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 	<title>$GODOT_PROJECT_NAME</title>
 	<style>
-		body {
-			touch-action: none;
-			margin: 0;
-			border: 0 none;
-			padding: 0;
+        html, body, #canvas {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        body {
+            color: white;
+            overflow: hidden;
+            touch-action: none;
 			text-align: center;
-			background-color: black;  /* change background color */
-		}
+			background-color: #afbfd2;  /* change background color */
+        }
 
-	        /* change the built in browser progress color */
-        	progress {
-	            accent-color: #e44033 /* #1C77DB  */
-        	}
+        #canvas {
+            display: block;
+        }
 
-		#canvas {
-			display: block;
-			margin: 0;
-			color: black;
-		}
 
 		#canvas:focus {
 			outline: none;
 		}
 
+
+        /* change the built in browser progress color */
+    	progress {
+            accent-color: #e44033 /* #1C77DB  */
+    	}
+
+
+        #clickme {
+         display: grid;
+         place-items: center;
+         height: 100vh;
+        }
+
+
+       #loading {
+         display: none
+         align-content: center;
+         height: 100vh;
+        }
+
 		img {
-			display: none;
-			width: 50%;
-			margin: auto;
+            display: none;
+            object-fit: cover;
+            width: 50%;
+            margin: 0 auto;
 		}
 
 		#status-progress {
 			display: none;
-			bottom: 10%;
 			width: 50%;
 			margin: 0 auto;
 		}
@@ -51,7 +70,7 @@
 </head>
 
 <body>
-	<canvas id="canvas">
+	<canvas id="canvas" width="100", height="1">
 		HTML5 canvas appears to be unsupported in the current browser.<br>
 		Please try updating or use a different browser.
 	</canvas>
@@ -91,14 +110,26 @@
 		const clickmeImage = document.getElementById('clickmeImage');
 		const loadingImage = document.getElementById('loadingImage');
 
-		clickmeImage.style.display = 'block'
-			loadingImage.style.display = 'none'
+		const clickme = document.getElementById('clickme');
+		const loading = document.getElementById('loading');
+
+  		clickme.style.display = 'grid';
+		clickmeImage.style.display = 'block';
+		loadingImage.style.display = 'none';
 
 		// This swaps the CLICKME image with the LOADING image when user clicks
 		document.getElementById('clickme').addEventListener('click', function () {
 			statusProgress.style.display = 'block';
-			clickmeImage.style.display = 'none'
-			loadingImage.style.display = 'block'
+
+      		clickme.style.display = 'none';
+			clickmeImage.style.display = 'none';
+            clickme.remove();
+
+            loading.style.display = 'grid';
+            loading.style.alignContent = 'center';
+			loadingImage.style.display = 'block';
+
+            document.body.style.backgroundColor = '#000000';
 			loadGame();
 		});
 
